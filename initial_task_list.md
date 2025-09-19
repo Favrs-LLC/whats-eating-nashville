@@ -128,31 +128,31 @@
 ## M4: Admin Interface
 
 ### 17. Admin Authentication
-- [ ] Create admin login page
-- [ ] Implement basic auth check
-- [ ] Add session management
-- [ ] Create admin layout wrapper
+- [x] Create admin login page (Basic Auth via middleware)
+- [x] Implement basic auth check
+- [x] Add session management (Basic Auth)
+- [x] Create admin layout wrapper
 
 ### 18. Admin Dashboard
-- [ ] Create admin home (/admin)
-- [ ] Add webhook logs table
-- [ ] Display recent articles
-- [ ] Show system stats
+- [x] Create admin home (/admin)
+- [x] Add webhook logs table
+- [x] Display recent articles
+- [x] Show system stats
 
 ### 19. Article Editor
-- [ ] Implement TipTap editor setup
-- [ ] Create article edit page (/admin/articles/[id])
-- [ ] Add auto-save functionality
-- [ ] Implement publish/unpublish toggle
-- [ ] Display source metadata
-- [ ] Add preview mode
+- [x] Implement TipTap editor setup
+- [x] Create article edit page (/admin/articles/[id])
+- [x] Add auto-save functionality
+- [x] Implement publish/unpublish toggle
+- [x] Display source metadata
+- [x] Add preview mode
 
 ### 20. OpenAI Integration
-- [ ] Create AI utility functions (lib/ai.ts)
-- [ ] Add excerpt generation button
-- [ ] Add bio enhancement button
-- [ ] Implement SEO title/description generation
-- [ ] Add loading states for AI operations
+- [x] Create AI utility functions (lib/ai.ts)
+- [x] Add excerpt generation button
+- [x] Add bio enhancement button
+- [x] Implement SEO title/description generation
+- [x] Add loading states for AI operations
 
 ## M5: SEO & Launch
 

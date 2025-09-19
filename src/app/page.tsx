@@ -134,6 +134,9 @@ const featuredPlaces = [
   }
 ];
 
+// Enable ISR with 5-minute revalidation
+export const revalidate = 300
+
 export default function Home() {
   return (
     <div className="space-y-12">

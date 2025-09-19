@@ -53,6 +53,9 @@ const cuisines = [
   'Hot Chicken', 'BBQ', 'Southern', 'Tacos', 'Pizza', 'Coffee', 'Brunch'
 ];
 
+// Enable ISR with 10-minute revalidation
+export const revalidate = 600
+
 export default function ArticlesPage() {
   return (
     <div className="min-h-screen bg-gray-50">

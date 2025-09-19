@@ -90,6 +90,9 @@ const cuisines = [
   'Tacos', 'Pizza', 'Sushi', 'Brunch', 'Coffee', 'Dessert'
 ];
 
+// Enable ISR with 30-minute revalidation
+export const revalidate = 1800
+
 export default function PlacesPage() {
   return (
     <div className="min-h-screen bg-gray-50">

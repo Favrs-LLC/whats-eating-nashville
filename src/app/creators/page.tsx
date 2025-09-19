@@ -67,6 +67,9 @@ const creators = [
   }
 ];
 
+// Enable ISR with 30-minute revalidation
+export const revalidate = 1800
+
 export default function CreatorsPage() {
   return (
     <div className="min-h-screen bg-gray-50">

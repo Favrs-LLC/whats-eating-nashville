@@ -1,0 +1,25 @@
+{
+  "name": "What's Eating Nashville",
+  "short_name": "WEN",
+  "description": "Discover Nashville's incredible food scene through the eyes of local creators",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#E8472B",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "categories": ["food", "lifestyle", "local"],
+  "lang": "en",
+  "dir": "ltr"
+}

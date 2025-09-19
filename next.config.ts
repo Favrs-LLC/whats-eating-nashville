@@ -1,7 +1,51 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  images: {
+    domains: [
+      'images.unsplash.com',
+      'instagram.com',
+      'scontent.cdninstagram.com',
+      'scontent-atl3-1.cdninstagram.com',
+    ],
+    formats: ['image/webp', 'image/avif'],
+  },
+  async headers() {
+    return [
+      {
+        source: '/api/:path*',
+        headers: [
+          { key: 'Access-Control-Allow-Origin', value: '*' },
+          { key: 'Access-Control-Allow-Methods', value: 'GET, POST, PUT, DELETE, OPTIONS' },
+          { key: 'Access-Control-Allow-Headers', value: 'Content-Type, Authorization' },
+        ],
+      },
+      {
+        source: '/(.*)',
+        headers: [
+          { key: 'X-Frame-Options', value: 'DENY' },
+          { key: 'X-Content-Type-Options', value: 'nosniff' },
+          { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
+        ],
+      },
+    ]
+  },
+  async rewrites() {
+    return [
+      {
+        source: '/rss',
+        destination: '/feed.xml',
+      },
+      {
+        source: '/rss.xml',
+        destination: '/feed.xml',
+      },
+      {
+        source: '/feed',
+        destination: '/feed.xml',
+      },
+    ]
+  },
 };
 
 export default nextConfig;
