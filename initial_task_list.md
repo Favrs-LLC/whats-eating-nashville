@@ -197,13 +197,13 @@
 - [ ] Manual QA checklist
 
 ### 26. Deployment
-- [ ] Set up Vercel project
-- [ ] Configure environment variables
-- [ ] Connect GitHub repository
-- [ ] Test preview deployments
-- [ ] Deploy to production
-- [ ] Verify all endpoints
-- [ ] Run production seed data
+- [x] Set up Vercel project
+- [x] Configure environment variables
+- [x] Connect GitHub repository
+- [x] Test preview deployments (GitHub Actions workflow)
+- [x] Deploy to production (automated via GitHub Actions)
+- [x] Verify all endpoints
+- [x] Run production seed data
 
 ## Nice-to-Have Features (Post-Launch)
 
