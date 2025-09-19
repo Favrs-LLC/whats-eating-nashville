@@ -50,40 +50,40 @@
 ## M2: Webhooks (API Integration)
 
 ### 7. Authentication & Security
-- [ ] Implement webhook authentication (Bearer token)
-- [ ] Add HMAC signature verification
-- [ ] Create basic auth middleware for admin routes
+- [x] Implement webhook authentication (Bearer token)
+- [x] Add HMAC signature verification
+- [x] Create basic auth middleware for admin routes
 - [ ] Set up CORS configuration for public APIs
 - [ ] Implement rate limiting (optional)
 
 ### 8. Webhook Infrastructure
-- [ ] Create webhook logging system (WebhookLog model)
-- [ ] Implement idempotency key handling
-- [ ] Create error handling and response utilities
+- [x] Create webhook logging system (WebhookLog model)
+- [x] Implement idempotency key handling
+- [x] Create error handling and response utilities
 - [ ] Set up webhook testing utilities
 
 ### 9. Create Article Webhook
-- [ ] Implement POST /api/hooks/gumloop/articles.create
-- [ ] Add creator upsert logic
-- [ ] Add place upsert logic
-- [ ] Implement article creation with all fields
-- [ ] Add source post tracking with SHA256 hash
-- [ ] Implement duplicate place detection
-- [ ] Add MergeEvent logging
-- [ ] Handle 201/202 responses correctly
-- [ ] Add comprehensive error handling
+- [x] Implement POST /api/hooks/gumloop/articles.create
+- [x] Add creator upsert logic
+- [x] Add place upsert logic
+- [x] Implement article creation with all fields
+- [x] Add source post tracking with SHA256 hash
+- [x] Implement duplicate place detection
+- [x] Add MergeEvent logging
+- [x] Handle 201/202 responses correctly
+- [x] Add comprehensive error handling
 
 ### 10. Merge Article Webhook
-- [ ] Implement POST /api/hooks/gumloop/articles.merge
-- [ ] Create intelligent merge logic for content
-- [ ] Implement review quote deduplication
-- [ ] Add source tracking for merged articles
-- [ ] Log merge events properly
+- [x] Implement POST /api/hooks/gumloop/articles.merge
+- [x] Create intelligent merge logic for content
+- [x] Implement review quote deduplication
+- [x] Add source tracking for merged articles
+- [x] Log merge events properly
 
 ### 11. Creator Upsert Webhook
-- [ ] Implement POST /api/hooks/gumloop/creators.upsert
-- [ ] Add validation for Instagram handles
-- [ ] Handle avatar URL updates
+- [x] Implement POST /api/hooks/gumloop/creators.upsert
+- [x] Add validation for Instagram handles
+- [x] Handle avatar URL updates
 
 ## M3: Frontend Polish (UI/UX)
 
