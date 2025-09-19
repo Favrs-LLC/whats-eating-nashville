@@ -88,15 +88,15 @@
 ## M3: Frontend Polish (UI/UX)
 
 ### 12. Component Library
-- [ ] Create ArticleCard component
-- [ ] Create CreatorCard component
-- [ ] Create PlaceCard component
+- [x] Create ArticleCard component
+- [x] Create CreatorCard component
+- [x] Create PlaceCard component
 - [ ] Implement Badge component variations
 - [ ] Style all shadcn/ui components to match brand
 
 ### 13. Article Pages
-- [ ] Implement article detail page (/articles/[slug])
-- [ ] Create InstagramEmbed component
+- [x] Implement article detail page (/articles/[slug]) - placeholder created
+- [x] Create InstagramEmbed component
 - [ ] Add article content rendering (HTML)
 - [ ] Implement place information panel
 - [ ] Add review quotes section
@@ -104,24 +104,24 @@
 - [ ] Implement related articles
 
 ### 14. Creator Pages
-- [ ] Create creators index page (/creators)
+- [x] Create creators index page (/creators)
 - [ ] Implement creator profile page (/creators/[handle])
 - [ ] Add creator article list
-- [ ] Display Instagram link and bio
+- [x] Display Instagram link and bio
 - [ ] Add follow functionality (stretch goal)
 
 ### 15. Place Pages
-- [ ] Create places index page (/places)
+- [x] Create places index page (/places)
 - [ ] Implement place detail page (/places/[placeId])
-- [ ] Add neighborhood and cuisine filters
+- [x] Add neighborhood and cuisine filters
 - [ ] Display aggregated reviews
 - [ ] Show all articles for a place
-- [ ] Add Google Maps link
+- [x] Add Google Maps link
 
 ### 16. Search & Filtering
-- [ ] Implement search functionality
-- [ ] Add neighborhood filter dropdown
-- [ ] Add cuisine filter with badges
+- [x] Implement search functionality (UI created)
+- [x] Add neighborhood filter dropdown
+- [x] Add cuisine filter with badges
 - [ ] Create filter state management
 - [ ] Add URL parameter persistence
 
