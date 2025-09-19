@@ -53,7 +53,7 @@
 - [x] Implement webhook authentication (Bearer token)
 - [x] Add HMAC signature verification
 - [x] Create basic auth middleware for admin routes
-- [ ] Set up CORS configuration for public APIs
+- [x] Set up CORS configuration for public APIs
 - [ ] Implement rate limiting (optional)
 
 ### 8. Webhook Infrastructure
@@ -157,14 +157,14 @@
 ## M5: SEO & Launch
 
 ### 21. Public APIs
-- [ ] Implement GET /api/public/articles
-- [ ] Implement GET /api/public/articles/[slug]
-- [ ] Implement GET /api/public/creators
-- [ ] Implement GET /api/public/creators/[handle]
-- [ ] Implement GET /api/public/places
-- [ ] Implement GET /api/public/places/[placeId]
-- [ ] Add pagination and filtering
-- [ ] Implement proper CORS headers
+- [x] Implement GET /api/public/articles
+- [x] Implement GET /api/public/articles/[slug]
+- [x] Implement GET /api/public/creators
+- [x] Implement GET /api/public/creators/[handle]
+- [x] Implement GET /api/public/places
+- [x] Implement GET /api/public/places/[placeId]
+- [x] Add pagination and filtering
+- [x] Implement proper CORS headers
 
 ### 22. SEO & Meta Tags
 - [ ] Configure next-seo defaults

@@ -36,7 +36,38 @@
 - [x] Call-to-action sections
 - [x] Responsive design with proper spacing
 
-## 🔄 Next Steps (M2: Webhooks)
+## ✅ Completed (M2: Webhooks & APIs)
+
+### Authentication & Security
+- [x] Webhook authentication (Bearer token + HMAC signature verification)
+- [x] Basic auth middleware for admin routes
+- [x] CORS configuration for public APIs
+- [x] Comprehensive error handling and validation
+
+### Webhook Infrastructure
+- [x] Webhook logging system with WebhookLog model
+- [x] Idempotency key handling for duplicate prevention
+- [x] Error response utilities and standardized responses
+- [x] Request body validation with required field checking
+
+### Gumloop Webhook Endpoints
+- [x] POST /api/hooks/gumloop/articles.create (with duplicate detection)
+- [x] POST /api/hooks/gumloop/articles.merge (intelligent content merging)
+- [x] POST /api/hooks/gumloop/creators.upsert (Instagram handle validation)
+- [x] Creator and place upsert utilities with deduplication
+- [x] Article creation with SHA256 source post tracking
+- [x] MergeEvent logging for audit trail
+
+### Public Read APIs
+- [x] GET /api/public/articles (search, pagination, filters)
+- [x] GET /api/public/articles/[slug] (full article details)
+- [x] GET /api/public/creators (with article counts)
+- [x] GET /api/public/creators/[handle] (profile + recent articles)
+- [x] GET /api/public/places (neighborhood/cuisine filters)
+- [x] GET /api/public/places/[placeId] (place details + articles)
+- [x] CORS headers on all public endpoints
+
+## 🔄 Next Steps (M3: Frontend Polish)
 
 ### Database Connection Required
 - [ ] Create Supabase project (manual setup needed)
@@ -44,18 +75,12 @@
 - [ ] Run initial Prisma migration
 - [ ] Test database connection and seed data
 
-### Webhook Infrastructure
-- [ ] Implement webhook authentication (Bearer token + HMAC)
-- [ ] Create webhook logging system
-- [ ] Add idempotency key handling
-- [ ] Set up CORS configuration for public APIs
-
-### API Endpoints
-- [ ] POST /api/hooks/gumloop/articles.create
-- [ ] POST /api/hooks/gumloop/articles.merge  
-- [ ] POST /api/hooks/gumloop/creators.upsert
-- [ ] Implement duplicate place detection logic
-- [ ] Add comprehensive error handling
+### Component Development
+- [ ] Create ArticleCard component
+- [ ] Create CreatorCard component  
+- [ ] Create PlaceCard component
+- [ ] Implement Instagram embed component
+- [ ] Build article detail pages with real data
 
 ## 🎯 Current Status
 

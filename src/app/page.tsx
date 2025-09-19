@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import ArticleCard from "@/components/cards/ArticleCard";
+import CreatorCard from "@/components/cards/CreatorCard";
+import PlaceCard from "@/components/cards/PlaceCard";
 import Link from "next/link";
 
 // Mock data for now - will be replaced with real data from database
@@ -10,27 +11,126 @@ const featuredArticles = [
     slug: 'princes-hot-chicken-line-worth-it',
     title: "Prince's Hot Chicken: The Line Was Worth It",
     excerpt: "A spicy pilgrimage on Nolensville Pike that delivers on every promise.",
-    creator: { displayName: 'Nash Food Tours', instagramHandle: 'nashfoodtours' },
-    place: { name: "Prince's Hot Chicken", neighborhood: 'Nolensville Pike' },
-    publishedAt: new Date('2024-01-15')
+    publishedAt: new Date('2024-01-15'),
+    sourcePostUrl: 'https://www.instagram.com/p/example1/',
+    creator: { 
+      displayName: 'Nash Food Tours', 
+      instagramHandle: 'nashfoodtours',
+      avatarUrl: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&h=100&fit=crop&crop=face'
+    },
+    place: { 
+      name: "Prince's Hot Chicken", 
+      neighborhood: 'Nolensville Pike',
+      cuisines: ['Hot Chicken', 'Southern']
+    }
   },
   {
     id: '2',
     slug: 'hattie-bs-midtown-experience',
     title: "Hattie B's: The Midtown Experience",
     excerpt: "Tourist trap or Nashville staple? We dive into the hot chicken debate.",
-    creator: { displayName: 'East Nash Bites', instagramHandle: 'eastnashbites' },
-    place: { name: "Hattie B's Hot Chicken", neighborhood: 'Midtown' },
-    publishedAt: new Date('2024-01-12')
+    publishedAt: new Date('2024-01-12'),
+    sourcePostUrl: 'https://www.instagram.com/p/example2/',
+    creator: { 
+      displayName: 'East Nash Bites', 
+      instagramHandle: 'eastnashbites',
+      avatarUrl: 'https://images.unsplash.com/photo-1494790108755-2616b612b1a5?w=100&h=100&fit=crop&crop=face'
+    },
+    place: { 
+      name: "Hattie B's Hot Chicken", 
+      neighborhood: 'Midtown',
+      cuisines: ['Hot Chicken', 'Southern']
+    }
   },
   {
     id: '3',
     slug: 'monells-family-style-tradition',
     title: "Monell's: Family Style Tradition",
     excerpt: "Where strangers become family over shared plates of Southern comfort.",
-    creator: { displayName: 'Music City Foodie', instagramHandle: 'musiccityfoodie' },
-    place: { name: "Monell's Dining & Catering", neighborhood: 'Germantown' },
-    publishedAt: new Date('2024-01-10')
+    publishedAt: new Date('2024-01-10'),
+    sourcePostUrl: 'https://www.instagram.com/p/example3/',
+    creator: { 
+      displayName: 'Music City Foodie', 
+      instagramHandle: 'musiccityfoodie',
+      avatarUrl: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face'
+    },
+    place: { 
+      name: "Monell's Dining & Catering", 
+      neighborhood: 'Germantown',
+      cuisines: ['Southern', 'Meat & Three']
+    }
+  }
+];
+
+const featuredCreators = [
+  {
+    id: '1',
+    displayName: 'Nash Food Tours',
+    instagramHandle: 'nashfoodtours',
+    instagramUrl: 'https://instagram.com/nashfoodtours',
+    avatarUrl: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&h=100&fit=crop&crop=face',
+    bio: 'Exploring Nashville\'s incredible food scene one bite at a time! 🍴',
+    articleCount: 12,
+    primaryCuisines: ['Hot Chicken', 'BBQ', 'Southern']
+  },
+  {
+    id: '2',
+    displayName: 'East Nash Bites',
+    instagramHandle: 'eastnashbites',
+    instagramUrl: 'https://instagram.com/eastnashbites',
+    avatarUrl: 'https://images.unsplash.com/photo-1494790108755-2616b612b1a5?w=100&h=100&fit=crop&crop=face',
+    bio: 'Covering the best eats in East Nashville and beyond! 🌮',
+    articleCount: 8,
+    primaryCuisines: ['Tacos', 'Mexican', 'Coffee']
+  },
+  {
+    id: '3',
+    displayName: 'Music City Foodie',
+    instagramHandle: 'musiccityfoodie',
+    instagramUrl: 'https://instagram.com/musiccityfoodie',
+    avatarUrl: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face',
+    bio: 'Your guide to Nashville\'s hottest restaurants and hidden gems! 🔥',
+    articleCount: 15,
+    primaryCuisines: ['American', 'Italian', 'Brunch']
+  }
+];
+
+const featuredPlaces = [
+  {
+    id: '1',
+    googlePlaceId: 'ChIJ_example_princes',
+    name: "Prince's Hot Chicken",
+    address: '5814 Nolensville Pike, Nashville, TN 37211',
+    neighborhood: 'Nolensville Pike',
+    cuisines: ['Hot Chicken', 'Southern'],
+    avgRating: 4.5,
+    reviewCount: 2190,
+    articleCount: 3,
+    mapsUrl: 'https://maps.google.com/?cid=123456789'
+  },
+  {
+    id: '2',
+    googlePlaceId: 'ChIJ_example_hattie',
+    name: "Hattie B's Hot Chicken",
+    address: '112 19th Ave S, Nashville, TN 37203',
+    neighborhood: 'Midtown',
+    cuisines: ['Hot Chicken', 'Southern'],
+    avgRating: 4.3,
+    reviewCount: 3456,
+    articleCount: 2,
+    mapsUrl: 'https://maps.google.com/?cid=987654321'
+  },
+  {
+    id: '3',
+    googlePlaceId: 'ChIJ_example_monell',
+    name: "Monell's Dining & Catering",
+    address: '1235 6th Ave N, Nashville, TN 37208',
+    neighborhood: 'Germantown',
+    cuisines: ['Southern', 'Meat & Three'],
+    avgRating: 4.2,
+    reviewCount: 1890,
+    articleCount: 1,
+    mapsUrl: 'https://maps.google.com/?cid=456789123'
   }
 ];
 
@@ -74,50 +174,61 @@ export default function Home() {
 
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {featuredArticles.map((article) => (
-            <Card key={article.id} className="hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <div className="flex items-center gap-2 mb-2">
-                  <Badge variant="secondary">
-                    {article.place.neighborhood}
-                  </Badge>
-                  <span className="text-sm text-gray-500">
-                    {article.publishedAt.toLocaleDateString()}
-                  </span>
-                </div>
-                <CardTitle className="line-clamp-2">
-                  <Link 
-                    href={`/articles/${article.slug}`}
-                    className="hover:text-brand-red transition-colors"
-                  >
-                    {article.title}
-                  </Link>
-                </CardTitle>
-                <CardDescription className="line-clamp-3">
-                  {article.excerpt}
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <span className="text-sm font-medium">
-                      {article.creator.displayName}
-                    </span>
-                    <span className="text-sm text-gray-500">
-                      @{article.creator.instagramHandle}
-                    </span>
-                  </div>
-                  <Badge variant="outline">
-                    {article.place.name}
-                  </Badge>
-                </div>
-              </CardContent>
-            </Card>
+            <ArticleCard key={article.id} article={article} />
           ))}
         </div>
 
         <div className="text-center mt-12">
           <Button asChild variant="outline" size="lg">
             <Link href="/articles">View All Articles</Link>
+          </Button>
+        </div>
+      </section>
+
+      {/* Featured Creators */}
+      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+            Meet Our Creators
+          </h2>
+          <p className="mt-4 text-lg text-gray-600">
+            The passionate food enthusiasts sharing Nashville's culinary stories
+          </p>
+        </div>
+
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {featuredCreators.map((creator) => (
+            <CreatorCard key={creator.id} creator={creator} />
+          ))}
+        </div>
+
+        <div className="text-center mt-12">
+          <Button asChild variant="outline" size="lg">
+            <Link href="/creators">View All Creators</Link>
+          </Button>
+        </div>
+      </section>
+
+      {/* Featured Places */}
+      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+            Popular Spots
+          </h2>
+          <p className="mt-4 text-lg text-gray-600">
+            The most talked-about restaurants and eateries in Nashville
+          </p>
+        </div>
+
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {featuredPlaces.map((place) => (
+            <PlaceCard key={place.id} place={place} />
+          ))}
+        </div>
+
+        <div className="text-center mt-12">
+          <Button asChild variant="outline" size="lg">
+            <Link href="/places">Browse All Spots</Link>
           </Button>
         </div>
       </section>
