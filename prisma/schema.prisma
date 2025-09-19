@@ -1,0 +1,117 @@
+// prisma/schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Creator {
+  id               String   @id @default(cuid())
+  displayName      String
+  instagramHandle  String   @unique
+  instagramUrl     String
+  avatarUrl        String?
+  bio              String?
+  links            Json?
+  isActive         Boolean  @default(true)
+  articles         Article[]
+  follows          CreatorFollow[]
+  createdAt        DateTime @default(now())
+}
+
+model Place {
+  id               String   @id @default(cuid())
+  googlePlaceId    String   @unique
+  name             String
+  address          String?
+  city             String?
+  lat              Float?
+  lng              Float?
+  mapsUrl          String?
+  avgRating        Float?
+  reviewCount      Int?
+  lastReviewSyncAt DateTime?
+  neighborhood     String?
+  cuisines         String[]
+  articles         Article[]
+  reviews          ReviewQuote[]
+  createdAt        DateTime @default(now())
+}
+
+model Article {
+  id             String   @id @default(cuid())
+  slug           String   @unique
+  title          String
+  excerpt        String?
+  bodyHtml       String
+  status         String   @default("published") // draft|published|archived
+  sourcePlatform String
+  sourcePostUrl  String
+  sourceUsername String
+  publishedAt    DateTime @default(now())
+  creatorId      String
+  placeId        String
+  creator        Creator  @relation(fields: [creatorId], references: [id])
+  place          Place    @relation(fields: [placeId], references: [id])
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+model SourcePost {
+  id         String   @id @default(cuid())
+  platform   String
+  postUrl    String   @unique
+  caption    String?
+  transcript String?
+  mediaType  String?
+  mediaUrl   String?
+  fetchedAt  DateTime
+  hash       String   @unique
+  creatorId  String?
+  placeId    String?
+  createdAt  DateTime @default(now())
+}
+
+model ReviewQuote {
+  id         String   @id @default(cuid())
+  placeId    String
+  author     String?
+  rating     Int?
+  text       String
+  reviewedAt DateTime?
+  source     String   @default("google")
+  place      Place    @relation(fields: [placeId], references: [id])
+}
+
+model MergeEvent {
+  id                 String   @id @default(cuid())
+  canonicalArticleId String
+  incomingArticleId  String
+  placeId            String
+  payloadJson        Json
+  createdAt          DateTime @default(now())
+}
+
+model WebhookLog {
+  id             String   @id @default(cuid())
+  source         String
+  endpoint       String
+  requestIdemKey String?
+  statusCode     Int
+  ok             Boolean
+  bodyJson       Json
+  createdAt      DateTime @default(now())
+}
+
+model CreatorFollow {
+  id         String   @id @default(cuid())
+  email      String
+  creatorId  String
+  creator    Creator  @relation(fields: [creatorId], references: [id])
+  createdAt  DateTime @default(now())
+  @@unique([email, creatorId])
+}

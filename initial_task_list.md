@@ -3,49 +3,49 @@
 ## Project Setup & Foundation
 
 ### 1. Initialize Project
-- [ ] Create Next.js 14+ app with TypeScript, App Router, and Tailwind CSS
-- [ ] Initialize Git repository
-- [ ] Set up project structure according to spec
-- [ ] Create `.env.local` with all required environment variables
-- [ ] Set up `.gitignore` to exclude env files and build artifacts
+- [x] Create Next.js 14+ app with TypeScript, App Router, and Tailwind CSS
+- [x] Initialize Git repository
+- [x] Set up project structure according to spec
+- [x] Create `.env.local` with all required environment variables
+- [x] Set up `.gitignore` to exclude env files and build artifacts
 
 ### 2. Database & ORM Setup
-- [ ] Create Supabase project and obtain connection strings
-- [ ] Install and configure Prisma with Supabase
-- [ ] Create complete Prisma schema (all models from spec)
-- [ ] Run initial migration
-- [ ] Create seed script with neighborhoods and cuisines data
-- [ ] Run seed script to populate initial data
+- [ ] Create Supabase project and obtain connection strings (manual setup needed)
+- [x] Install and configure Prisma with Supabase
+- [x] Create complete Prisma schema (all models from spec)
+- [ ] Run initial migration (requires DB connection)
+- [x] Create seed script with neighborhoods and cuisines data
+- [ ] Run seed script to populate initial data (requires DB connection)
 
 ### 3. Core Dependencies & Configuration
-- [ ] Install shadcn/ui and initialize with custom theme colors
-- [ ] Configure Tailwind with brand colors (#E8472B, #215E7C)
-- [ ] Set up custom fonts (Playfair Display, Inter)
-- [ ] Install TipTap editor dependencies
-- [ ] Install additional packages (next-seo, date-fns, etc.)
-- [ ] Configure TypeScript paths and aliases
+- [x] Install shadcn/ui and initialize with custom theme colors
+- [x] Configure Tailwind with brand colors (#E8472B, #215E7C)
+- [x] Set up custom fonts (Playfair Display, Inter)
+- [x] Install TipTap editor dependencies
+- [x] Install additional packages (next-seo, date-fns, etc.)
+- [x] Configure TypeScript paths and aliases
 
 ## M1: Scaffold + DB (Foundation)
 
 ### 4. Database Models & Relations
-- [ ] Implement Prisma client singleton
-- [ ] Create type definitions from Prisma schema
-- [ ] Test all model relationships
+- [x] Implement Prisma client singleton
+- [x] Create type definitions from Prisma schema
+- [ ] Test all model relationships (requires DB connection)
 - [ ] Add database indexes for performance
 - [ ] Implement full-text search setup for articles/places
 
 ### 5. Base Layout & Navigation
-- [ ] Create root layout with NavBar component
-- [ ] Implement responsive navigation (Home, Spots, Creators, Map, About)
-- [ ] Create Footer component with links
-- [ ] Set up global styles and CSS variables
+- [x] Create root layout with NavBar component
+- [x] Implement responsive navigation (Home, Spots, Creators, Map, About)
+- [x] Create Footer component with links
+- [x] Set up global styles and CSS variables
 - [ ] Implement dark mode support (optional)
 
 ### 6. Home Page Structure
-- [ ] Create home page with Hero section
-- [ ] Implement article feed component
+- [x] Create home page with Hero section
+- [x] Implement article feed component
 - [ ] Add loading and error states
-- [ ] Create placeholder content for testing
+- [x] Create placeholder content for testing
 
 ## M2: Webhooks (API Integration)
 
