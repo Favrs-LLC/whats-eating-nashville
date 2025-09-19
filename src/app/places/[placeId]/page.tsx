@@ -43,7 +43,7 @@ export async function generateMetadata({ params }: { params: Promise<{ placeId: 
     openGraph: {
       title: `${place.name} - Nashville Restaurant`,
       description: `${place.cuisines.join(', ')} restaurant in ${place.neighborhood || 'Nashville'}`,
-      type: 'place',
+      type: 'website',
     },
     twitter: {
       card: 'summary_large_image',
@@ -193,9 +193,14 @@ export default async function PlaceDetailPage({ params }: { params: Promise<{ pl
                       key={article.id}
                       article={{
                         ...article,
+                        excerpt: article.excerpt || undefined,
+                        creator: {
+                          ...article.creator,
+                          avatarUrl: article.creator.avatarUrl || undefined,
+                        },
                         place: {
                           name: place.name,
-                          neighborhood: place.neighborhood,
+                          neighborhood: place.neighborhood || undefined,
                           cuisines: place.cuisines,
                         },
                       }}

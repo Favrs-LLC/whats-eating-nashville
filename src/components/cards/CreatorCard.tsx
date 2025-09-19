@@ -10,8 +10,8 @@ interface CreatorCardProps {
     displayName: string
     instagramHandle: string
     instagramUrl: string
-    avatarUrl?: string
-    bio?: string
+    avatarUrl?: string | null
+    bio?: string | null
     articleCount?: number
     primaryCuisines?: string[]
   }

@@ -140,13 +140,13 @@ export function generateArticleJsonLd(article: {
 // Generate JSON-LD for places
 export function generatePlaceJsonLd(place: {
   name: string
-  address?: string
-  neighborhood?: string
-  avgRating?: number
-  reviewCount?: number
+  address?: string | null
+  neighborhood?: string | null
+  avgRating?: number | null
+  reviewCount?: number | null
   cuisines: string[]
-  lat?: number
-  lng?: number
+  lat?: number | null
+  lng?: number | null
 }) {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
   

@@ -31,8 +31,8 @@
 - [x] Implement Prisma client singleton
 - [x] Create type definitions from Prisma schema
 - [x] Test all model relationships (confirmed working with Supabase)
-- [ ] Add database indexes for performance
-- [ ] Implement full-text search setup for articles/places
+- [x] Add database indexes for performance
+- [x] Implement full-text search setup for articles/places
 
 ### 5. Base Layout & Navigation
 - [x] Create root layout with NavBar component
@@ -95,27 +95,27 @@
 - [ ] Style all shadcn/ui components to match brand
 
 ### 13. Article Pages
-- [x] Implement article detail page (/articles/[slug]) - placeholder created
+- [x] Implement article detail page (/articles/[slug]) with real data
 - [x] Create InstagramEmbed component
-- [ ] Add article content rendering (HTML)
-- [ ] Implement place information panel
-- [ ] Add review quotes section
-- [ ] Add social sharing buttons
+- [x] Add article content rendering (HTML)
+- [x] Implement place information panel
+- [x] Add review quotes section
+- [x] Add social sharing buttons
 - [ ] Implement related articles
 
 ### 14. Creator Pages
-- [x] Create creators index page (/creators)
-- [ ] Implement creator profile page (/creators/[handle])
-- [ ] Add creator article list
+- [x] Create creators index page (/creators) with real data
+- [x] Implement creator profile page (/creators/[handle])
+- [x] Add creator article list
 - [x] Display Instagram link and bio
 - [ ] Add follow functionality (stretch goal)
 
 ### 15. Place Pages
-- [x] Create places index page (/places)
-- [ ] Implement place detail page (/places/[placeId])
+- [x] Create places index page (/places) with real data
+- [x] Implement place detail page (/places/[placeId])
 - [x] Add neighborhood and cuisine filters
-- [ ] Display aggregated reviews
-- [ ] Show all articles for a place
+- [x] Display aggregated reviews
+- [x] Show all articles for a place
 - [x] Add Google Maps link
 
 ### 16. Search & Filtering

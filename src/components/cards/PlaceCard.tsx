@@ -9,17 +9,17 @@ interface PlaceCardProps {
     id: string
     googlePlaceId: string
     name: string
-    address?: string
-    neighborhood?: string
+    address?: string | null
+    neighborhood?: string | null
     cuisines: string[]
-    avgRating?: number
-    reviewCount?: number
-    mapsUrl?: string
+    avgRating?: number | null
+    reviewCount?: number | null
+    mapsUrl?: string | null
     articleCount?: number
     coordinates?: {
       lat: number
       lng: number
-    }
+    } | null
   }
   className?: string
   showAddress?: boolean

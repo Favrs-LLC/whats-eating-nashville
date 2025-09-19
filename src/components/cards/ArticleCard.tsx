@@ -18,7 +18,7 @@ interface ArticleCardProps {
     }
     place: {
       name: string
-      neighborhood?: string
+      neighborhood?: string | null
       cuisines: string[]
     }
   }

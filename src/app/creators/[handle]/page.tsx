@@ -159,10 +159,11 @@ export default async function CreatorProfilePage({ params }: { params: Promise<{
                   key={article.id}
                   article={{
                     ...article,
+                    excerpt: article.excerpt || undefined,
                     creator: {
                       displayName: creator.displayName,
                       instagramHandle: creator.instagramHandle,
-                      avatarUrl: creator.avatarUrl,
+                      avatarUrl: creator.avatarUrl || undefined,
                     },
                   }}
                   showCreator={false} // Don't show creator since we're on their profile

@@ -187,7 +187,21 @@ export default async function Home() {
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {recentArticles.length > 0 ? (
             recentArticles.map((article) => (
-              <ArticleCard key={article.id} article={article} />
+              <ArticleCard 
+                key={article.id} 
+                article={{
+                  ...article,
+                  excerpt: article.excerpt || undefined,
+                  creator: {
+                    ...article.creator,
+                    avatarUrl: article.creator.avatarUrl || undefined,
+                  },
+                  place: {
+                    ...article.place,
+                    neighborhood: article.place.neighborhood || undefined,
+                  },
+                }} 
+              />
             ))
           ) : (
             <div className="col-span-full text-center py-12">
