@@ -9,18 +9,18 @@ export async function logWebhookRequest(
   endpoint: string,
   statusCode: number,
   ok: boolean,
-  bodyJson: any,
-  requestIdemKey?: string
+  bodyJson: unknown,
+  requestIdemKey?: string | null
 ) {
   try {
     await prisma.webhookLog.create({
       data: {
         source,
         endpoint,
-        requestIdemKey,
+        requestIdemKey: requestIdemKey || undefined,
         statusCode,
         ok,
-        bodyJson,
+        bodyJson: bodyJson as any,
       },
     })
   } catch (error) {
@@ -66,7 +66,7 @@ export async function checkIdempotencyKey(
  * Create standardized webhook response
  */
 export function createWebhookResponse(
-  data: any,
+  data: unknown,
   status = 200,
   headers: Record<string, string> = {}
 ) {
@@ -114,7 +114,7 @@ export async function extractRequestBody(request: NextRequest) {
  * Validate required fields in request body
  */
 export function validateRequiredFields(
-  body: any,
+  body: Record<string, unknown>,
   requiredFields: string[]
 ): { valid: boolean; missing?: string[] } {
   const missing = requiredFields.filter(field => {
@@ -131,9 +131,11 @@ export function validateRequiredFields(
 /**
  * Get nested value from object using dot notation
  */
-function getNestedValue(obj: any, path: string): any {
-  return path.split('.').reduce((current, key) => {
-    return current && current[key] !== undefined ? current[key] : undefined
+function getNestedValue(obj: Record<string, unknown>, path: string): unknown {
+  return path.split('.').reduce((current: unknown, key: string) => {
+    return current && typeof current === 'object' && current !== null && key in current 
+      ? (current as Record<string, unknown>)[key] 
+      : undefined
   }, obj)
 }
 
@@ -141,7 +143,7 @@ function getNestedValue(obj: any, path: string): any {
  * Generate SHA256 hash for source post deduplication
  */
 export function generateSourceHash(postUrl: string, caption?: string, transcript?: string): string {
-  const crypto = require('crypto')
+  const { createHash } = require('crypto')
   const content = `${postUrl}${caption || ''}${transcript || ''}`
-  return crypto.createHash('sha256').update(content).digest('hex')
+  return createHash('sha256').update(content).digest('hex')
 }

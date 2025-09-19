@@ -38,10 +38,9 @@ export async function GET(request: NextRequest) {
           },
         },
       },
-      orderBy: [
-        { _count: { articles: 'desc' } }, // Most covered places first
-        { createdAt: 'desc' },
-      ],
+      orderBy: {
+        createdAt: 'desc',
+      },
       take: limit + 1,
     })
 

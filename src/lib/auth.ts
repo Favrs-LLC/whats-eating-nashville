@@ -24,7 +24,7 @@ export function verifyWebhookToken(request: NextRequest): boolean {
 /**
  * Verify webhook HMAC signature
  */
-export async function verifyWebhookHmac(request: NextRequest): Promise<boolean> {
+export async function verifyWebhookHmac(request: NextRequest | Request): Promise<boolean> {
   const signature = request.headers.get('x-signature')
   const secret = process.env.WEBHOOK_HMAC_SECRET
   

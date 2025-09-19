@@ -47,7 +47,6 @@ const mockArticle = {
 }
 
 export default function ArticleEditorPage() {
-  const params = useParams()
   const [article, setArticle] = useState(mockArticle)
   const [isPreview, setIsPreview] = useState(false)
   const [isSaving, setIsSaving] = useState(false)

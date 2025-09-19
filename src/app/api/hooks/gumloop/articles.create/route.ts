@@ -43,7 +43,7 @@ export async function POST(request: NextRequest) {
     const hasValidHmac = await verifyWebhookHmac(request.clone())
 
     if (!hasValidToken && !hasValidHmac) {
-      await logWebhookRequest('gumloop', endpoint, 401, false, { error: 'Unauthorized' }, idemKey)
+      await logWebhookRequest('gumloop', endpoint, 401, false, { error: 'Unauthorized' }, idemKey || undefined)
       return createUnauthorizedResponse('Invalid authentication')
     }
 

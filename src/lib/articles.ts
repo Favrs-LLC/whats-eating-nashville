@@ -254,7 +254,7 @@ async function logMergeEvent(
   canonicalArticleId: string,
   incomingArticleId: string,
   placeId: string,
-  payload: any
+  payload: unknown
 ) {
   try {
     await prisma.mergeEvent.create({
@@ -262,7 +262,7 @@ async function logMergeEvent(
         canonicalArticleId,
         incomingArticleId,
         placeId,
-        payloadJson: payload,
+        payloadJson: payload as any,
       },
     })
   } catch (error) {

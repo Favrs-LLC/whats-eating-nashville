@@ -75,7 +75,8 @@ const mockArticle = {
 }
 
 // Generate metadata for the page
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params
   // In production, this would fetch the real article
   const article = mockArticle
   
@@ -115,7 +116,8 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 // Enable ISR with 1-hour revalidation for articles
 export const revalidate = 3600
 
-export default function ArticlePage({ params }: { params: { slug: string } }) {
+export default async function ArticlePage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
   const article = mockArticle // In production: await getArticleBySlug(params.slug)
   
   if (!article) {

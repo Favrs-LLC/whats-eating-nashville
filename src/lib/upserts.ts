@@ -7,7 +7,7 @@ export interface CreatorUpsertData {
   instagram_url: string
   avatar_url?: string
   bio?: string
-  links?: any
+  links?: Record<string, unknown>
 }
 
 export interface PlaceUpsertData {
@@ -43,7 +43,7 @@ export async function upsertCreator(data: CreatorUpsertData): Promise<Creator> {
         instagramUrl: data.instagram_url,
         avatarUrl: data.avatar_url,
         bio: data.bio,
-        links: data.links,
+        links: data.links as any,
         isActive: true,
       },
       create: {
@@ -52,7 +52,7 @@ export async function upsertCreator(data: CreatorUpsertData): Promise<Creator> {
         instagramUrl: data.instagram_url,
         avatarUrl: data.avatar_url,
         bio: data.bio,
-        links: data.links,
+        links: data.links as any,
         isActive: true,
       },
     })

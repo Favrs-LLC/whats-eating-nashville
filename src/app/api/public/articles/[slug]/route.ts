@@ -3,12 +3,13 @@ import { prisma } from '@/lib/prisma'
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { slug: string } }
+  { params }: { params: Promise<{ slug: string }> }
 ) {
+  const { slug } = await params
   try {
     const article = await prisma.article.findUnique({
       where: {
-        slug: params.slug,
+        slug: slug,
         status: 'published',
       },
       include: {
