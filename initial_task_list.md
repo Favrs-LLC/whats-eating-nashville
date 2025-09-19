@@ -1,0 +1,225 @@
+# What's Eating Nashville - Development Task List
+
+## Project Setup & Foundation
+
+### 1. Initialize Project
+- [ ] Create Next.js 14+ app with TypeScript, App Router, and Tailwind CSS
+- [ ] Initialize Git repository
+- [ ] Set up project structure according to spec
+- [ ] Create `.env.local` with all required environment variables
+- [ ] Set up `.gitignore` to exclude env files and build artifacts
+
+### 2. Database & ORM Setup
+- [ ] Create Supabase project and obtain connection strings
+- [ ] Install and configure Prisma with Supabase
+- [ ] Create complete Prisma schema (all models from spec)
+- [ ] Run initial migration
+- [ ] Create seed script with neighborhoods and cuisines data
+- [ ] Run seed script to populate initial data
+
+### 3. Core Dependencies & Configuration
+- [ ] Install shadcn/ui and initialize with custom theme colors
+- [ ] Configure Tailwind with brand colors (#E8472B, #215E7C)
+- [ ] Set up custom fonts (Playfair Display, Inter)
+- [ ] Install TipTap editor dependencies
+- [ ] Install additional packages (next-seo, date-fns, etc.)
+- [ ] Configure TypeScript paths and aliases
+
+## M1: Scaffold + DB (Foundation)
+
+### 4. Database Models & Relations
+- [ ] Implement Prisma client singleton
+- [ ] Create type definitions from Prisma schema
+- [ ] Test all model relationships
+- [ ] Add database indexes for performance
+- [ ] Implement full-text search setup for articles/places
+
+### 5. Base Layout & Navigation
+- [ ] Create root layout with NavBar component
+- [ ] Implement responsive navigation (Home, Spots, Creators, Map, About)
+- [ ] Create Footer component with links
+- [ ] Set up global styles and CSS variables
+- [ ] Implement dark mode support (optional)
+
+### 6. Home Page Structure
+- [ ] Create home page with Hero section
+- [ ] Implement article feed component
+- [ ] Add loading and error states
+- [ ] Create placeholder content for testing
+
+## M2: Webhooks (API Integration)
+
+### 7. Authentication & Security
+- [ ] Implement webhook authentication (Bearer token)
+- [ ] Add HMAC signature verification
+- [ ] Create basic auth middleware for admin routes
+- [ ] Set up CORS configuration for public APIs
+- [ ] Implement rate limiting (optional)
+
+### 8. Webhook Infrastructure
+- [ ] Create webhook logging system (WebhookLog model)
+- [ ] Implement idempotency key handling
+- [ ] Create error handling and response utilities
+- [ ] Set up webhook testing utilities
+
+### 9. Create Article Webhook
+- [ ] Implement POST /api/hooks/gumloop/articles.create
+- [ ] Add creator upsert logic
+- [ ] Add place upsert logic
+- [ ] Implement article creation with all fields
+- [ ] Add source post tracking with SHA256 hash
+- [ ] Implement duplicate place detection
+- [ ] Add MergeEvent logging
+- [ ] Handle 201/202 responses correctly
+- [ ] Add comprehensive error handling
+
+### 10. Merge Article Webhook
+- [ ] Implement POST /api/hooks/gumloop/articles.merge
+- [ ] Create intelligent merge logic for content
+- [ ] Implement review quote deduplication
+- [ ] Add source tracking for merged articles
+- [ ] Log merge events properly
+
+### 11. Creator Upsert Webhook
+- [ ] Implement POST /api/hooks/gumloop/creators.upsert
+- [ ] Add validation for Instagram handles
+- [ ] Handle avatar URL updates
+
+## M3: Frontend Polish (UI/UX)
+
+### 12. Component Library
+- [ ] Create ArticleCard component
+- [ ] Create CreatorCard component
+- [ ] Create PlaceCard component
+- [ ] Implement Badge component variations
+- [ ] Style all shadcn/ui components to match brand
+
+### 13. Article Pages
+- [ ] Implement article detail page (/articles/[slug])
+- [ ] Create InstagramEmbed component
+- [ ] Add article content rendering (HTML)
+- [ ] Implement place information panel
+- [ ] Add review quotes section
+- [ ] Add social sharing buttons
+- [ ] Implement related articles
+
+### 14. Creator Pages
+- [ ] Create creators index page (/creators)
+- [ ] Implement creator profile page (/creators/[handle])
+- [ ] Add creator article list
+- [ ] Display Instagram link and bio
+- [ ] Add follow functionality (stretch goal)
+
+### 15. Place Pages
+- [ ] Create places index page (/places)
+- [ ] Implement place detail page (/places/[placeId])
+- [ ] Add neighborhood and cuisine filters
+- [ ] Display aggregated reviews
+- [ ] Show all articles for a place
+- [ ] Add Google Maps link
+
+### 16. Search & Filtering
+- [ ] Implement search functionality
+- [ ] Add neighborhood filter dropdown
+- [ ] Add cuisine filter with badges
+- [ ] Create filter state management
+- [ ] Add URL parameter persistence
+
+## M4: Admin Interface
+
+### 17. Admin Authentication
+- [ ] Create admin login page
+- [ ] Implement basic auth check
+- [ ] Add session management
+- [ ] Create admin layout wrapper
+
+### 18. Admin Dashboard
+- [ ] Create admin home (/admin)
+- [ ] Add webhook logs table
+- [ ] Display recent articles
+- [ ] Show system stats
+
+### 19. Article Editor
+- [ ] Implement TipTap editor setup
+- [ ] Create article edit page (/admin/articles/[id])
+- [ ] Add auto-save functionality
+- [ ] Implement publish/unpublish toggle
+- [ ] Display source metadata
+- [ ] Add preview mode
+
+### 20. OpenAI Integration
+- [ ] Create AI utility functions (lib/ai.ts)
+- [ ] Add excerpt generation button
+- [ ] Add bio enhancement button
+- [ ] Implement SEO title/description generation
+- [ ] Add loading states for AI operations
+
+## M5: SEO & Launch
+
+### 21. Public APIs
+- [ ] Implement GET /api/public/articles
+- [ ] Implement GET /api/public/articles/[slug]
+- [ ] Implement GET /api/public/creators
+- [ ] Implement GET /api/public/creators/[handle]
+- [ ] Implement GET /api/public/places
+- [ ] Implement GET /api/public/places/[placeId]
+- [ ] Add pagination and filtering
+- [ ] Implement proper CORS headers
+
+### 22. SEO & Meta Tags
+- [ ] Configure next-seo defaults
+- [ ] Add page-specific meta tags
+- [ ] Implement JSON-LD for articles
+- [ ] Add JSON-LD for places
+- [ ] Add JSON-LD for organization
+- [ ] Create Open Graph images
+
+### 23. Feeds & Sitemaps
+- [ ] Generate dynamic sitemap.xml
+- [ ] Create RSS feed endpoint
+- [ ] Add Atom feed support
+- [ ] Implement robots.txt
+
+### 24. Performance & Optimization
+- [ ] Implement ISR for appropriate pages
+- [ ] Add image optimization
+- [ ] Configure caching headers
+- [ ] Add monitoring/analytics
+- [ ] Optimize database queries
+
+## Testing & Deployment
+
+### 25. Testing
+- [ ] Write unit tests for utilities
+- [ ] Test webhook endpoints
+- [ ] Test authentication flows
+- [ ] Add integration tests
+- [ ] Manual QA checklist
+
+### 26. Deployment
+- [ ] Set up Vercel project
+- [ ] Configure environment variables
+- [ ] Connect GitHub repository
+- [ ] Test preview deployments
+- [ ] Deploy to production
+- [ ] Verify all endpoints
+- [ ] Run production seed data
+
+## Nice-to-Have Features (Post-Launch)
+
+### 27. Enhanced Features
+- [ ] Map view with restaurant clustering
+- [ ] Email digest system for creator follows
+- [ ] Image proxy for OG images
+- [ ] Multi-admin support with RLS
+- [ ] Advanced analytics dashboard
+- [ ] Mobile app API extensions
+
+## Notes
+
+- Tasks should be completed in order within each section
+- Each completed task should be tested before marking complete
+- Update this list as new requirements emerge
+- Consider creating Linear tickets for major sections
+
+Last Updated: [Current Date]
