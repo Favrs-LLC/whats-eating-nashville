@@ -10,12 +10,12 @@
 - [x] Set up `.gitignore` to exclude env files and build artifacts
 
 ### 2. Database & ORM Setup
-- [ ] Create Supabase project and obtain connection strings (manual setup needed)
+- [x] Create Supabase project and obtain connection strings
 - [x] Install and configure Prisma with Supabase
 - [x] Create complete Prisma schema (all models from spec)
-- [ ] Run initial migration (requires DB connection)
+- [x] Run initial migration (schema pushed to Supabase)
 - [x] Create seed script with neighborhoods and cuisines data
-- [ ] Run seed script to populate initial data (requires DB connection)
+- [x] Run seed script to populate initial data (3 creators, 3 places seeded)
 
 ### 3. Core Dependencies & Configuration
 - [x] Install shadcn/ui and initialize with custom theme colors
@@ -30,7 +30,7 @@
 ### 4. Database Models & Relations
 - [x] Implement Prisma client singleton
 - [x] Create type definitions from Prisma schema
-- [ ] Test all model relationships (requires DB connection)
+- [x] Test all model relationships (confirmed working with Supabase)
 - [ ] Add database indexes for performance
 - [ ] Implement full-text search setup for articles/places
 

@@ -1,6 +1,7 @@
 import CreatorCard from "@/components/cards/CreatorCard";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { getAllCreators } from "@/lib/api";
 import { Search, Users } from "lucide-react";
 
 // Mock data - will be replaced with real API calls
@@ -70,7 +71,8 @@ const creators = [
 // Enable ISR with 30-minute revalidation
 export const revalidate = 1800
 
-export default function CreatorsPage() {
+export default async function CreatorsPage() {
+  const creators = await getAllCreators()
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
@@ -110,7 +112,7 @@ export default function CreatorsPage() {
             </div>
             <div className="text-center">
               <div className="text-3xl font-bold text-brand-red">
-                {creators.reduce((sum, creator) => sum + (creator.articleCount || 0), 0)}
+                {creators.reduce((sum, creator) => sum + creator._count.articles, 0)}
               </div>
               <div className="text-sm text-gray-600">Total Articles</div>
             </div>
@@ -124,7 +126,13 @@ export default function CreatorsPage() {
         {/* Creators Grid */}
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {creators.map((creator) => (
-            <CreatorCard key={creator.id} creator={creator} />
+            <CreatorCard 
+              key={creator.id} 
+              creator={{
+                ...creator,
+                articleCount: creator._count.articles,
+              }} 
+            />
           ))}
         </div>
 

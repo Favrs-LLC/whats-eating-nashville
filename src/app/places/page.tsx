@@ -2,6 +2,7 @@ import PlaceCard from "@/components/cards/PlaceCard";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
+import { getAllPlaces } from "@/lib/api";
 import { Search, MapPin, Filter } from "lucide-react";
 
 // Mock data - will be replaced with real API calls
@@ -93,7 +94,8 @@ const cuisines = [
 // Enable ISR with 30-minute revalidation
 export const revalidate = 1800
 
-export default function PlacesPage() {
+export default async function PlacesPage() {
+  const places = await getAllPlaces()
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
@@ -175,7 +177,13 @@ export default function PlacesPage() {
         {/* Places Grid */}
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {places.map((place) => (
-            <PlaceCard key={place.id} place={place} />
+            <PlaceCard 
+              key={place.id} 
+              place={{
+                ...place,
+                articleCount: place._count.articles,
+              }} 
+            />
           ))}
         </div>
 

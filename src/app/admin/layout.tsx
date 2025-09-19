@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
+import Image from "next/image"
 import Link from "next/link"
 import { 
   Home, 
@@ -34,10 +35,14 @@ export default function AdminLayout({
         <div className="px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center gap-4">
-              <Link href="/admin" className="flex items-center gap-2">
-                <div className="w-8 h-8 bg-brand-red rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">WEN</span>
-                </div>
+              <Link href="/admin" className="flex items-center gap-3">
+                <Image
+                  src="/logo.png"
+                  alt="What's Eating Nashville"
+                  width={32}
+                  height={32}
+                  className="rounded-lg"
+                />
                 <div>
                   <h1 className="font-semibold text-gray-900">Admin Panel</h1>
                   <p className="text-xs text-gray-500">What's Eating Nashville</p>

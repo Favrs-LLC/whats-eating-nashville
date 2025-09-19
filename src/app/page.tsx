@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import ArticleCard from "@/components/cards/ArticleCard";
 import CreatorCard from "@/components/cards/CreatorCard";
 import PlaceCard from "@/components/cards/PlaceCard";
+import { getRecentArticles, getAllCreators, getAllPlaces } from "@/lib/api";
 import Link from "next/link";
 
 // Mock data for now - will be replaced with real data from database
@@ -137,7 +138,15 @@ const featuredPlaces = [
 // Enable ISR with 5-minute revalidation
 export const revalidate = 300
 
-export default function Home() {
+export default async function Home() {
+  // Fetch real data from database
+  const recentArticles = await getRecentArticles(3)
+  const allCreators = await getAllCreators()
+  const allPlaces = await getAllPlaces()
+  
+  // Take first 3 for featured sections
+  const featuredCreators = allCreators.slice(0, 3)
+  const featuredPlaces = allPlaces.slice(0, 3)
   return (
     <div className="space-y-12">
       {/* Hero Section */}
@@ -176,9 +185,15 @@ export default function Home() {
         </div>
 
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {featuredArticles.map((article) => (
-            <ArticleCard key={article.id} article={article} />
-          ))}
+          {recentArticles.length > 0 ? (
+            recentArticles.map((article) => (
+              <ArticleCard key={article.id} article={article} />
+            ))
+          ) : (
+            <div className="col-span-full text-center py-12">
+              <p className="text-gray-600">No articles published yet. Check back soon!</p>
+            </div>
+          )}
         </div>
 
         <div className="text-center mt-12">
@@ -201,7 +216,13 @@ export default function Home() {
 
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {featuredCreators.map((creator) => (
-            <CreatorCard key={creator.id} creator={creator} />
+            <CreatorCard 
+              key={creator.id} 
+              creator={{
+                ...creator,
+                articleCount: creator._count.articles,
+              }} 
+            />
           ))}
         </div>
 
@@ -225,7 +246,13 @@ export default function Home() {
 
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {featuredPlaces.map((place) => (
-            <PlaceCard key={place.id} place={place} />
+            <PlaceCard 
+              key={place.id} 
+              place={{
+                ...place,
+                articleCount: place._count.articles,
+              }} 
+            />
           ))}
         </div>
 

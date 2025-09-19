@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
@@ -23,8 +24,15 @@ export default function NavBar() {
         <div className="flex h-16 justify-between items-center">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <Link href="/" className="flex items-center">
-              <span className="font-serif text-2xl font-bold text-brand-red">
+            <Link href="/" className="flex items-center gap-3">
+              <Image
+                src="/logo.png"
+                alt="What's Eating Nashville"
+                width={40}
+                height={40}
+                className="rounded-lg"
+              />
+              <span className="font-serif text-xl font-bold text-gray-900 hidden sm:block">
                 What's Eating Nashville
               </span>
             </Link>
