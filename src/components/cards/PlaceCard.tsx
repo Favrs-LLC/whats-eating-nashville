@@ -8,6 +8,7 @@ interface PlaceCardProps {
   place: {
     id: string
     googlePlaceId: string
+    slug?: string | null
     name: string
     address?: string | null
     neighborhood?: string | null
@@ -39,7 +40,7 @@ export default function PlaceCard({
         <div className="flex items-start justify-between">
           <div className="flex-1 min-w-0">
             <CardTitle className="line-clamp-2 group-hover:text-brand-red transition-colors">
-              <Link href={`/places/${place.id}`}>
+              <Link href={`/places/${place.slug || place.id}`}>
                 {place.name}
               </Link>
             </CardTitle>
@@ -109,7 +110,7 @@ export default function PlaceCard({
           {/* Action buttons */}
           <div className="flex gap-2">
             <Button asChild variant="outline" size="sm" className="flex-1">
-              <Link href={`/places/${place.id}`}>
+              <Link href={`/places/${place.slug || place.id}`}>
                 View Details
               </Link>
             </Button>

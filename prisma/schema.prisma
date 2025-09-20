@@ -27,6 +27,7 @@ model Creator {
 model Place {
   id               String   @id @default(cuid())
   googlePlaceId    String   @unique
+  slug             String?  @unique
   name             String
   address          String?
   city             String?

@@ -52,6 +52,7 @@ export async function GET(request: NextRequest) {
       places: items.map(place => ({
         id: place.id,
         google_place_id: place.googlePlaceId,
+        slug: place.slug,
         name: place.name,
         address: place.address,
         neighborhood: place.neighborhood,

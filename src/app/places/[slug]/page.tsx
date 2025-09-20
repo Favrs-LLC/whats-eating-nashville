@@ -4,7 +4,7 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import ArticleCard from "@/components/cards/ArticleCard"
-import { getPlaceById } from "@/lib/api"
+import { getPlaceBySlug } from "@/lib/api"
 import { generatePlaceJsonLd } from "@/lib/seo"
 import { 
   MapPin, 
@@ -20,9 +20,9 @@ import Link from "next/link"
 export const revalidate = 3600
 
 // Generate metadata for the page
-export async function generateMetadata({ params }: { params: Promise<{ placeId: string }> }): Promise<Metadata> {
-  const { placeId } = await params
-  const place = await getPlaceById(placeId)
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params
+  const place = await getPlaceBySlug(slug)
   
   if (!place) {
     return {
@@ -53,9 +53,9 @@ export async function generateMetadata({ params }: { params: Promise<{ placeId: 
   }
 }
 
-export default async function PlaceDetailPage({ params }: { params: Promise<{ placeId: string }> }) {
-  const { placeId } = await params
-  const place = await getPlaceById(placeId)
+export default async function PlaceDetailPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  const place = await getPlaceBySlug(slug)
   
   if (!place) {
     notFound()
@@ -263,7 +263,7 @@ export default async function PlaceDetailPage({ params }: { params: Promise<{ pl
                           </span>
                           {review.reviewedAt && (
                             <span className="text-xs text-gray-500">
-                              {review.reviewedAt.toLocaleDateString()}
+                              {new Date(review.reviewedAt).toLocaleDateString()}
                             </span>
                           )}
                         </div>

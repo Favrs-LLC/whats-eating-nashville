@@ -94,7 +94,83 @@ export async function getCreatorByHandle(handle: string) {
 }
 
 /**
- * Get place by ID with articles and reviews
+ * Get place by slug with articles and reviews
+ */
+export async function getPlaceBySlug(slug: string) {
+  try {
+    // First get the place
+    const { data: place, error: placeError } = await supabase
+      .from('Place')
+      .select(`
+        id,
+        googlePlaceId,
+        slug,
+        name,
+        address,
+        city,
+        neighborhood,
+        cuisines,
+        avgRating,
+        reviewCount,
+        mapsUrl,
+        lat,
+        lng,
+        createdAt
+      `)
+      .eq('slug', slug)
+      .single()
+
+    if (placeError) throw placeError
+    if (!place) return null
+
+    // Get articles for this place
+    const { data: articles } = await supabase
+      .from('Article')
+      .select(`
+        id,
+        slug,
+        title,
+        excerpt,
+        publishedAt,
+        sourcePostUrl,
+        creator:Creator!inner(
+          id,
+          displayName,
+          instagramHandle,
+          avatarUrl
+        )
+      `)
+      .eq('placeId', place.id)
+      .eq('status', 'published')
+      .order('publishedAt', { ascending: false })
+
+    // Get reviews for this place
+    const { data: reviews } = await supabase
+      .from('ReviewQuote')
+      .select(`
+        id,
+        author,
+        rating,
+        text,
+        source,
+        reviewedAt
+      `)
+      .eq('placeId', place.id)
+      .order('reviewedAt', { ascending: false })
+
+    return {
+      ...place,
+      articles: articles || [],
+      reviews: reviews || []
+    }
+  } catch (error) {
+    console.error('Error fetching place by slug:', error)
+    return null
+  }
+}
+
+/**
+ * Get place by ID with articles and reviews (legacy function)
  */
 export async function getPlaceById(id: string) {
   try {
@@ -224,6 +300,7 @@ export async function getAllPlaces() {
       .select(`
         id,
         googlePlaceId,
+        slug,
         name,
         address,
         city,

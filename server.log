@@ -1,0 +1,486 @@
+
+> whats-eating-nashville@0.1.0 dev
+> next dev -p 3010
+
+   ▲ Next.js 15.5.3
+   - Local:        http://localhost:3010
+   - Network:      http://192.168.1.126:3010
+   - Environments: .env.local
+
+ ✓ Starting...
+ ✓ Ready in 2.2s
+ ○ Compiling /api/test ...
+ ✓ Compiled /api/test in 1286ms (296 modules)
+ GET /api/test 200 in 1532ms
+ ○ Compiling /api/debug/db ...
+ ✓ Compiled /api/debug/db in 566ms (370 modules)
+ GET /api/debug/db 200 in 1196ms
+ ○ Compiling / ...
+ ✓ Compiled / in 1939ms (926 modules)
+ GET / 200 in 2890ms
+ ✓ Compiled /map in 423ms (921 modules)
+ GET /map 200 in 812ms
+ ⚠ The "images.domains" configuration is deprecated. Please use "images.remotePatterns" configuration instead.
+ GET / 200 in 1332ms
+ ✓ Compiled /favicon.ico in 333ms (605 modules)
+ GET /favicon.ico 200 in 435ms
+ GET /map 200 in 81ms
+ ○ Compiling /api/public/places ...
+ ✓ Compiled /api/public/places in 549ms (925 modules)
+prisma:query BEGIN
+prisma:query DEALLOCATE ALL
+prisma:query SELECT "public"."Place"."id", "public"."Place"."googlePlaceId", "public"."Place"."name", "public"."Place"."address", "public"."Place"."city", "public"."Place"."lat", "public"."Place"."lng", "public"."Place"."mapsUrl", "public"."Place"."avgRating", "public"."Place"."reviewCount", "public"."Place"."lastReviewSyncAt", "public"."Place"."neighborhood", "public"."Place"."cuisines", "public"."Place"."createdAt", COALESCE("aggr_selection_0_Article"."_aggr_count_articles", 0) AS "_aggr_count_articles", COALESCE("aggr_selection_1_ReviewQuote"."_aggr_count_reviews", 0) AS "_aggr_count_reviews" FROM "public"."Place" LEFT JOIN (SELECT "public"."Article"."placeId", COUNT(*) AS "_aggr_count_articles" FROM "public"."Article" WHERE "public"."Article"."status" = $1 GROUP BY "public"."Article"."placeId") AS "aggr_selection_0_Article" ON ("public"."Place"."id" = "aggr_selection_0_Article"."placeId") LEFT JOIN (SELECT "public"."ReviewQuote"."placeId", COUNT(*) AS "_aggr_count_reviews" FROM "public"."ReviewQuote" WHERE 1=1 GROUP BY "public"."ReviewQuote"."placeId") AS "aggr_selection_1_ReviewQuote" ON ("public"."Place"."id" = "aggr_selection_1_ReviewQuote"."placeId") WHERE 1=1 ORDER BY "public"."Place"."createdAt" DESC LIMIT $2 OFFSET $3
+prisma:query COMMIT
+ GET /api/public/places?limit=100 200 in 1408ms
+prisma:query BEGIN
+prisma:query DEALLOCATE ALL
+prisma:query SELECT "public"."Place"."id", "public"."Place"."googlePlaceId", "public"."Place"."name", "public"."Place"."address", "public"."Place"."city", "public"."Place"."lat", "public"."Place"."lng", "public"."Place"."mapsUrl", "public"."Place"."avgRating", "public"."Place"."reviewCount", "public"."Place"."lastReviewSyncAt", "public"."Place"."neighborhood", "public"."Place"."cuisines", "public"."Place"."createdAt", COALESCE("aggr_selection_0_Article"."_aggr_count_articles", 0) AS "_aggr_count_articles", COALESCE("aggr_selection_1_ReviewQuote"."_aggr_count_reviews", 0) AS "_aggr_count_reviews" FROM "public"."Place" LEFT JOIN (SELECT "public"."Article"."placeId", COUNT(*) AS "_aggr_count_articles" FROM "public"."Article" WHERE "public"."Article"."status" = $1 GROUP BY "public"."Article"."placeId") AS "aggr_selection_0_Article" ON ("public"."Place"."id" = "aggr_selection_0_Article"."placeId") LEFT JOIN (SELECT "public"."ReviewQuote"."placeId", COUNT(*) AS "_aggr_count_reviews" FROM "public"."ReviewQuote" WHERE 1=1 GROUP BY "public"."ReviewQuote"."placeId") AS "aggr_selection_1_ReviewQuote" ON ("public"."Place"."id" = "aggr_selection_1_ReviewQuote"."placeId") WHERE 1=1 ORDER BY "public"."Place"."createdAt" DESC LIMIT $2 OFFSET $3
+prisma:query COMMIT
+ GET /api/public/places?limit=100 200 in 158ms
+ GET /map 200 in 254ms
+ GET /favicon.ico 200 in 59ms
+prisma:query SELECT 1
+prisma:query BEGIN
+prisma:query DEALLOCATE ALL
+prisma:query SELECT "public"."Place"."id", "public"."Place"."googlePlaceId", "public"."Place"."name", "public"."Place"."address", "public"."Place"."city", "public"."Place"."lat", "public"."Place"."lng", "public"."Place"."mapsUrl", "public"."Place"."avgRating", "public"."Place"."reviewCount", "public"."Place"."lastReviewSyncAt", "public"."Place"."neighborhood", "public"."Place"."cuisines", "public"."Place"."createdAt", COALESCE("aggr_selection_0_Article"."_aggr_count_articles", 0) AS "_aggr_count_articles", COALESCE("aggr_selection_1_ReviewQuote"."_aggr_count_reviews", 0) AS "_aggr_count_reviews" FROM "public"."Place" LEFT JOIN (SELECT "public"."Article"."placeId", COUNT(*) AS "_aggr_count_articles" FROM "public"."Article" WHERE "public"."Article"."status" = $1 GROUP BY "public"."Article"."placeId") AS "aggr_selection_0_Article" ON ("public"."Place"."id" = "aggr_selection_0_Article"."placeId") LEFT JOIN (SELECT "public"."ReviewQuote"."placeId", COUNT(*) AS "_aggr_count_reviews" FROM "public"."ReviewQuote" WHERE 1=1 GROUP BY "public"."ReviewQuote"."placeId") AS "aggr_selection_1_ReviewQuote" ON ("public"."Place"."id" = "aggr_selection_1_ReviewQuote"."placeId") WHERE 1=1 ORDER BY "public"."Place"."createdAt" DESC LIMIT $2 OFFSET $3
+prisma:query COMMIT
+ GET /api/public/places?limit=100 200 in 193ms
+ GET /map 200 in 1607ms
+ GET /map 200 in 177ms
+ GET /favicon.ico 200 in 51ms
+prisma:query SELECT 1
+prisma:query BEGIN
+prisma:query DEALLOCATE ALL
+prisma:query SELECT "public"."Place"."id", "public"."Place"."googlePlaceId", "public"."Place"."name", "public"."Place"."address", "public"."Place"."city", "public"."Place"."lat", "public"."Place"."lng", "public"."Place"."mapsUrl", "public"."Place"."avgRating", "public"."Place"."reviewCount", "public"."Place"."lastReviewSyncAt", "public"."Place"."neighborhood", "public"."Place"."cuisines", "public"."Place"."createdAt", COALESCE("aggr_selection_0_Article"."_aggr_count_articles", 0) AS "_aggr_count_articles", COALESCE("aggr_selection_1_ReviewQuote"."_aggr_count_reviews", 0) AS "_aggr_count_reviews" FROM "public"."Place" LEFT JOIN (SELECT "public"."Article"."placeId", COUNT(*) AS "_aggr_count_articles" FROM "public"."Article" WHERE "public"."Article"."status" = $1 GROUP BY "public"."Article"."placeId") AS "aggr_selection_0_Article" ON ("public"."Place"."id" = "aggr_selection_0_Article"."placeId") LEFT JOIN (SELECT "public"."ReviewQuote"."placeId", COUNT(*) AS "_aggr_count_reviews" FROM "public"."ReviewQuote" WHERE 1=1 GROUP BY "public"."ReviewQuote"."placeId") AS "aggr_selection_1_ReviewQuote" ON ("public"."Place"."id" = "aggr_selection_1_ReviewQuote"."placeId") WHERE 1=1 ORDER BY "public"."Place"."createdAt" DESC LIMIT $2 OFFSET $3
+prisma:query COMMIT
+ GET /api/public/places?limit=100 200 in 206ms
+prisma:query SELECT 1
+prisma:query BEGIN
+prisma:query DEALLOCATE ALL
+prisma:query SELECT "public"."Place"."id", "public"."Place"."googlePlaceId", "public"."Place"."name", "public"."Place"."address", "public"."Place"."city", "public"."Place"."lat", "public"."Place"."lng", "public"."Place"."mapsUrl", "public"."Place"."avgRating", "public"."Place"."reviewCount", "public"."Place"."lastReviewSyncAt", "public"."Place"."neighborhood", "public"."Place"."cuisines", "public"."Place"."createdAt", COALESCE("aggr_selection_0_Article"."_aggr_count_articles", 0) AS "_aggr_count_articles", COALESCE("aggr_selection_1_ReviewQuote"."_aggr_count_reviews", 0) AS "_aggr_count_reviews" FROM "public"."Place" LEFT JOIN (SELECT "public"."Article"."placeId", COUNT(*) AS "_aggr_count_articles" FROM "public"."Article" WHERE "public"."Article"."status" = $1 GROUP BY "public"."Article"."placeId") AS "aggr_selection_0_Article" ON ("public"."Place"."id" = "aggr_selection_0_Article"."placeId") LEFT JOIN (SELECT "public"."ReviewQuote"."placeId", COUNT(*) AS "_aggr_count_reviews" FROM "public"."ReviewQuote" WHERE 1=1 GROUP BY "public"."ReviewQuote"."placeId") AS "aggr_selection_1_ReviewQuote" ON ("public"."Place"."id" = "aggr_selection_1_ReviewQuote"."placeId") WHERE 1=1 ORDER BY "public"."Place"."createdAt" DESC LIMIT $2 OFFSET $3
+prisma:query COMMIT
+ GET /api/public/places 200 in 192ms
+ ✓ Compiled in 1008ms (937 modules)
+ GET /map 200 in 290ms
+ ✓ Compiled in 3s (923 modules)
+ GET /map 200 in 351ms
+ ✓ Compiled in 489ms (923 modules)
+ GET /map 200 in 246ms
+ ✓ Compiled in 693ms (923 modules)
+ GET /map 200 in 180ms
+ GET /map 200 in 396ms
+ ✓ Compiled in 499ms (914 modules)
+ GET /map 200 in 313ms
+ ✓ Compiled in 372ms (914 modules)
+ GET /map 200 in 205ms
+ GET /map 200 in 419ms
+ ○ Compiling /api/public/places ...
+ ✓ Compiled /api/public/places in 556ms (599 modules)
+ ✓ Compiled (605 modules)
+ GET /favicon.ico 200 in 859ms
+prisma:query SELECT 1
+prisma:query BEGIN
+prisma:query DEALLOCATE ALL
+prisma:query SELECT "public"."Place"."id", "public"."Place"."googlePlaceId", "public"."Place"."name", "public"."Place"."address", "public"."Place"."city", "public"."Place"."lat", "public"."Place"."lng", "public"."Place"."mapsUrl", "public"."Place"."avgRating", "public"."Place"."reviewCount", "public"."Place"."lastReviewSyncAt", "public"."Place"."neighborhood", "public"."Place"."cuisines", "public"."Place"."createdAt", COALESCE("aggr_selection_0_Article"."_aggr_count_articles", 0) AS "_aggr_count_articles", COALESCE("aggr_selection_1_ReviewQuote"."_aggr_count_reviews", 0) AS "_aggr_count_reviews" FROM "public"."Place" LEFT JOIN (SELECT "public"."Article"."placeId", COUNT(*) AS "_aggr_count_articles" FROM "public"."Article" WHERE "public"."Article"."status" = $1 GROUP BY "public"."Article"."placeId") AS "aggr_selection_0_Article" ON ("public"."Place"."id" = "aggr_selection_0_Article"."placeId") LEFT JOIN (SELECT "public"."ReviewQuote"."placeId", COUNT(*) AS "_aggr_count_reviews" FROM "public"."ReviewQuote" WHERE 1=1 GROUP BY "public"."ReviewQuote"."placeId") AS "aggr_selection_1_ReviewQuote" ON ("public"."Place"."id" = "aggr_selection_1_ReviewQuote"."placeId") WHERE 1=1 ORDER BY "public"."Place"."createdAt" DESC LIMIT $2 OFFSET $3
+prisma:query COMMIT
+ GET /api/public/places?limit=100 200 in 917ms
+ ✓ Compiled in 1129ms (914 modules)
+ GET /map 200 in 1046ms
+ ⨯ ./src/app/map/page.tsx
+Error:   [31mx[0m 'const' declarations must be initialized
+     ,-[[36;1;4m/Users/williambridges/Desktop/projects/whatseatingnashville/src/app/map/page.tsx[0m:115:1]
+ [2m112[0m |       setError(`Failed to load Google Maps: ${error.message}`)
+ [2m113[0m |       setLoading(false)
+ [2m114[0m |     })
+ [2m115[0m |   }, [places]) // Add places as dependency to ensure it runs after places are loaded
+     : [35;1m     ^^^^^^^^[0m
+ [2m116[0m | 
+ [2m117[0m |   // Add markers when places data is loaded
+ [2m118[0m |   useEffect(() => {
+     `----
+  [31mx[0m Expected a semicolon
+     ,-[[36;1;4m/Users/williambridges/Desktop/projects/whatseatingnashville/src/app/map/page.tsx[0m:115:1]
+ [2m112[0m |       setError(`Failed to load Google Maps: ${error.message}`)
+ [2m113[0m |       setLoading(false)
+ [2m114[0m |     })
+ [2m115[0m |   }, [places]) // Add places as dependency to ensure it runs after places are loaded
+     : [35;1m             ^[0m
+ [2m116[0m | 
+ [2m117[0m |   // Add markers when places data is loaded
+ [2m118[0m |   useEffect(() => {
+     `----
+  [31mx[0m Unexpected eof
+     ,-[[36;1;4m/Users/williambridges/Desktop/projects/whatseatingnashville/src/app/map/page.tsx[0m:263:3]
+ [2m261[0m |     </div>
+ [2m262[0m |   )
+ [2m263[0m | }
+     `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/app/map/page.tsx
+ ○ Compiling /_error ...
+ ✓ Compiled /_error in 5s (1246 modules)
+ GET /map 500 in 8317ms
+ GET /map 200 in 926ms
+ GET /map 200 in 125ms
+ GET /map 200 in 98ms
+ GET /map 200 in 817ms
+ ○ Compiling /api/public/places ...
+ ✓ Compiled /api/public/places in 1094ms (779 modules)
+prisma:query BEGIN
+prisma:query DEALLOCATE ALL
+prisma:query SELECT "public"."Place"."id", "public"."Place"."googlePlaceId", "public"."Place"."name", "public"."Place"."address", "public"."Place"."city", "public"."Place"."lat", "public"."Place"."lng", "public"."Place"."mapsUrl", "public"."Place"."avgRating", "public"."Place"."reviewCount", "public"."Place"."lastReviewSyncAt", "public"."Place"."neighborhood", "public"."Place"."cuisines", "public"."Place"."createdAt", COALESCE("aggr_selection_0_Article"."_aggr_count_articles", 0) AS "_aggr_count_articles", COALESCE("aggr_selection_1_ReviewQuote"."_aggr_count_reviews", 0) AS "_aggr_count_reviews" FROM "public"."Place" LEFT JOIN (SELECT "public"."Article"."placeId", COUNT(*) AS "_aggr_count_articles" FROM "public"."Article" WHERE "public"."Article"."status" = $1 GROUP BY "public"."Article"."placeId") AS "aggr_selection_0_Article" ON ("public"."Place"."id" = "aggr_selection_0_Article"."placeId") LEFT JOIN (SELECT "public"."ReviewQuote"."placeId", COUNT(*) AS "_aggr_count_reviews" FROM "public"."ReviewQuote" WHERE 1=1 GROUP BY "public"."ReviewQuote"."placeId") AS "aggr_selection_1_ReviewQuote" ON ("public"."Place"."id" = "aggr_selection_1_ReviewQuote"."placeId") WHERE 1=1 ORDER BY "public"."Place"."createdAt" DESC LIMIT $2 OFFSET $3
+prisma:query COMMIT
+ GET /api/public/places?limit=100 200 in 1891ms
+ ✓ Compiled in 919ms (1269 modules)
+ GET /map 200 in 494ms
+ ✓ Compiled in 901ms (1167 modules)
+ GET /map 200 in 492ms
+ ✓ Compiled in 418ms (1167 modules)
+ GET /map 200 in 240ms
+ GET /map 200 in 582ms
+ ○ Compiling /api/public/places ...
+ ✓ Compiled /api/public/places in 1027ms (695 modules)
+ ✓ Compiled (701 modules)
+ GET /favicon.ico 200 in 1636ms
+prisma:query BEGIN
+prisma:query DEALLOCATE ALL
+prisma:query SELECT "public"."Place"."id", "public"."Place"."googlePlaceId", "public"."Place"."name", "public"."Place"."address", "public"."Place"."city", "public"."Place"."lat", "public"."Place"."lng", "public"."Place"."mapsUrl", "public"."Place"."avgRating", "public"."Place"."reviewCount", "public"."Place"."lastReviewSyncAt", "public"."Place"."neighborhood", "public"."Place"."cuisines", "public"."Place"."createdAt", COALESCE("aggr_selection_0_Article"."_aggr_count_articles", 0) AS "_aggr_count_articles", COALESCE("aggr_selection_1_ReviewQuote"."_aggr_count_reviews", 0) AS "_aggr_count_reviews" FROM "public"."Place" LEFT JOIN (SELECT "public"."Article"."placeId", COUNT(*) AS "_aggr_count_articles" FROM "public"."Article" WHERE "public"."Article"."status" = $1 GROUP BY "public"."Article"."placeId") AS "aggr_selection_0_Article" ON ("public"."Place"."id" = "aggr_selection_0_Article"."placeId") LEFT JOIN (SELECT "public"."ReviewQuote"."placeId", COUNT(*) AS "_aggr_count_reviews" FROM "public"."ReviewQuote" WHERE 1=1 GROUP BY "public"."ReviewQuote"."placeId") AS "aggr_selection_1_ReviewQuote" ON ("public"."Place"."id" = "aggr_selection_1_ReviewQuote"."placeId") WHERE 1=1 ORDER BY "public"."Place"."createdAt" DESC LIMIT $2 OFFSET $3
+prisma:query COMMIT
+ GET /api/public/places?limit=100 200 in 1869ms
+ GET /map 200 in 858ms
+ GET /favicon.ico 200 in 59ms
+prisma:query SELECT 1
+prisma:query BEGIN
+prisma:query DEALLOCATE ALL
+prisma:query SELECT "public"."Place"."id", "public"."Place"."googlePlaceId", "public"."Place"."name", "public"."Place"."address", "public"."Place"."city", "public"."Place"."lat", "public"."Place"."lng", "public"."Place"."mapsUrl", "public"."Place"."avgRating", "public"."Place"."reviewCount", "public"."Place"."lastReviewSyncAt", "public"."Place"."neighborhood", "public"."Place"."cuisines", "public"."Place"."createdAt", COALESCE("aggr_selection_0_Article"."_aggr_count_articles", 0) AS "_aggr_count_articles", COALESCE("aggr_selection_1_ReviewQuote"."_aggr_count_reviews", 0) AS "_aggr_count_reviews" FROM "public"."Place" LEFT JOIN (SELECT "public"."Article"."placeId", COUNT(*) AS "_aggr_count_articles" FROM "public"."Article" WHERE "public"."Article"."status" = $1 GROUP BY "public"."Article"."placeId") AS "aggr_selection_0_Article" ON ("public"."Place"."id" = "aggr_selection_0_Article"."placeId") LEFT JOIN (SELECT "public"."ReviewQuote"."placeId", COUNT(*) AS "_aggr_count_reviews" FROM "public"."ReviewQuote" WHERE 1=1 GROUP BY "public"."ReviewQuote"."placeId") AS "aggr_selection_1_ReviewQuote" ON ("public"."Place"."id" = "aggr_selection_1_ReviewQuote"."placeId") WHERE 1=1 ORDER BY "public"."Place"."createdAt" DESC LIMIT $2 OFFSET $3
+prisma:query COMMIT
+ GET /api/public/places?limit=100 200 in 225ms
+prisma:query SELECT 1
+prisma:query BEGIN
+prisma:query DEALLOCATE ALL
+prisma:query SELECT "public"."Place"."id", "public"."Place"."googlePlaceId", "public"."Place"."name", "public"."Place"."address", "public"."Place"."city", "public"."Place"."lat", "public"."Place"."lng", "public"."Place"."mapsUrl", "public"."Place"."avgRating", "public"."Place"."reviewCount", "public"."Place"."lastReviewSyncAt", "public"."Place"."neighborhood", "public"."Place"."cuisines", "public"."Place"."createdAt", COALESCE("aggr_selection_0_Article"."_aggr_count_articles", 0) AS "_aggr_count_articles", COALESCE("aggr_selection_1_ReviewQuote"."_aggr_count_reviews", 0) AS "_aggr_count_reviews" FROM "public"."Place" LEFT JOIN (SELECT "public"."Article"."placeId", COUNT(*) AS "_aggr_count_articles" FROM "public"."Article" WHERE "public"."Article"."status" = $1 GROUP BY "public"."Article"."placeId") AS "aggr_selection_0_Article" ON ("public"."Place"."id" = "aggr_selection_0_Article"."placeId") LEFT JOIN (SELECT "public"."ReviewQuote"."placeId", COUNT(*) AS "_aggr_count_reviews" FROM "public"."ReviewQuote" WHERE 1=1 GROUP BY "public"."ReviewQuote"."placeId") AS "aggr_selection_1_ReviewQuote" ON ("public"."Place"."id" = "aggr_selection_1_ReviewQuote"."placeId") WHERE 1=1 ORDER BY "public"."Place"."createdAt" DESC LIMIT $2 OFFSET $3
+prisma:query COMMIT
+ GET /api/public/places 200 in 209ms
+ ✓ Compiled in 1310ms (1176 modules)
+ GET /map 200 in 504ms
+ ✓ Compiled in 625ms (1176 modules)
+ GET /map 200 in 331ms
+ ✓ Compiled in 662ms (1176 modules)
+ GET /map 200 in 229ms
+ ✓ Compiled in 606ms (1176 modules)
+ GET /map 200 in 249ms
+ GET /map 200 in 564ms
+ ○ Compiling /favicon.ico ...
+ ✓ Compiled /favicon.ico in 605ms (701 modules)
+ GET /favicon.ico 200 in 1213ms
+prisma:query BEGIN
+prisma:query DEALLOCATE ALL
+prisma:query SELECT "public"."Place"."id", "public"."Place"."googlePlaceId", "public"."Place"."name", "public"."Place"."address", "public"."Place"."city", "public"."Place"."lat", "public"."Place"."lng", "public"."Place"."mapsUrl", "public"."Place"."avgRating", "public"."Place"."reviewCount", "public"."Place"."lastReviewSyncAt", "public"."Place"."neighborhood", "public"."Place"."cuisines", "public"."Place"."createdAt", COALESCE("aggr_selection_0_Article"."_aggr_count_articles", 0) AS "_aggr_count_articles", COALESCE("aggr_selection_1_ReviewQuote"."_aggr_count_reviews", 0) AS "_aggr_count_reviews" FROM "public"."Place" LEFT JOIN (SELECT "public"."Article"."placeId", COUNT(*) AS "_aggr_count_articles" FROM "public"."Article" WHERE "public"."Article"."status" = $1 GROUP BY "public"."Article"."placeId") AS "aggr_selection_0_Article" ON ("public"."Place"."id" = "aggr_selection_0_Article"."placeId") LEFT JOIN (SELECT "public"."ReviewQuote"."placeId", COUNT(*) AS "_aggr_count_reviews" FROM "public"."ReviewQuote" WHERE 1=1 GROUP BY "public"."ReviewQuote"."placeId") AS "aggr_selection_1_ReviewQuote" ON ("public"."Place"."id" = "aggr_selection_1_ReviewQuote"."placeId") WHERE 1=1 ORDER BY "public"."Place"."createdAt" DESC LIMIT $2 OFFSET $3
+prisma:query COMMIT
+ GET /api/public/places?limit=100 200 in 1473ms
+ ○ Compiling /places/[placeId] ...
+ ✓ Compiled /places/[placeId] in 1318ms (1188 modules)
+ GET /places/cmfrbbyd10005cae64uh2zulg 200 in 4014ms
+ GET /places/cmfrbbyd10005cae64uh2zulg 200 in 283ms
+Error fetching place: {
+  code: 'PGRST116',
+  details: 'The result contains 0 rows',
+  hint: null,
+  message: 'Cannot coerce the result to a single JSON object'
+}
+Error fetching place: {
+  code: 'PGRST116',
+  details: 'The result contains 0 rows',
+  hint: null,
+  message: 'Cannot coerce the result to a single JSON object'
+}
+Error fetching place: {
+  code: 'PGRST116',
+  details: 'The result contains 0 rows',
+  hint: null,
+  message: 'Cannot coerce the result to a single JSON object'
+}
+Error fetching place: {
+  code: 'PGRST116',
+  details: 'The result contains 0 rows',
+  hint: null,
+  message: 'Cannot coerce the result to a single JSON object'
+}
+Error fetching place: {
+  code: 'PGRST116',
+  details: 'The result contains 0 rows',
+  hint: null,
+  message: 'Cannot coerce the result to a single JSON object'
+}
+Error fetching place: {
+  code: 'PGRST116',
+  details: 'The result contains 0 rows',
+  hint: null,
+  message: 'Cannot coerce the result to a single JSON object'
+}
+ GET /places/cmfrbbyd10005cae64uh2zulg 404 in 297ms
+ GET /map 200 in 151ms
+prisma:query SELECT 1
+prisma:query BEGIN
+prisma:query DEALLOCATE ALL
+prisma:query SELECT "public"."Place"."id", "public"."Place"."googlePlaceId", "public"."Place"."name", "public"."Place"."address", "public"."Place"."city", "public"."Place"."lat", "public"."Place"."lng", "public"."Place"."mapsUrl", "public"."Place"."avgRating", "public"."Place"."reviewCount", "public"."Place"."lastReviewSyncAt", "public"."Place"."neighborhood", "public"."Place"."cuisines", "public"."Place"."createdAt", COALESCE("aggr_selection_0_Article"."_aggr_count_articles", 0) AS "_aggr_count_articles", COALESCE("aggr_selection_1_ReviewQuote"."_aggr_count_reviews", 0) AS "_aggr_count_reviews" FROM "public"."Place" LEFT JOIN (SELECT "public"."Article"."placeId", COUNT(*) AS "_aggr_count_articles" FROM "public"."Article" WHERE "public"."Article"."status" = $1 GROUP BY "public"."Article"."placeId") AS "aggr_selection_0_Article" ON ("public"."Place"."id" = "aggr_selection_0_Article"."placeId") LEFT JOIN (SELECT "public"."ReviewQuote"."placeId", COUNT(*) AS "_aggr_count_reviews" FROM "public"."ReviewQuote" WHERE 1=1 GROUP BY "public"."ReviewQuote"."placeId") AS "aggr_selection_1_ReviewQuote" ON ("public"."Place"."id" = "aggr_selection_1_ReviewQuote"."placeId") WHERE 1=1 ORDER BY "public"."Place"."createdAt" DESC LIMIT $2 OFFSET $3
+prisma:query COMMIT
+ GET /api/public/places?limit=100 200 in 212ms
+ GET /map 200 in 134ms
+ GET /favicon.ico 200 in 85ms
+prisma:query BEGIN
+prisma:query DEALLOCATE ALL
+prisma:query SELECT "public"."Place"."id", "public"."Place"."googlePlaceId", "public"."Place"."name", "public"."Place"."address", "public"."Place"."city", "public"."Place"."lat", "public"."Place"."lng", "public"."Place"."mapsUrl", "public"."Place"."avgRating", "public"."Place"."reviewCount", "public"."Place"."lastReviewSyncAt", "public"."Place"."neighborhood", "public"."Place"."cuisines", "public"."Place"."createdAt", COALESCE("aggr_selection_0_Article"."_aggr_count_articles", 0) AS "_aggr_count_articles", COALESCE("aggr_selection_1_ReviewQuote"."_aggr_count_reviews", 0) AS "_aggr_count_reviews" FROM "public"."Place" LEFT JOIN (SELECT "public"."Article"."placeId", COUNT(*) AS "_aggr_count_articles" FROM "public"."Article" WHERE "public"."Article"."status" = $1 GROUP BY "public"."Article"."placeId") AS "aggr_selection_0_Article" ON ("public"."Place"."id" = "aggr_selection_0_Article"."placeId") LEFT JOIN (SELECT "public"."ReviewQuote"."placeId", COUNT(*) AS "_aggr_count_reviews" FROM "public"."ReviewQuote" WHERE 1=1 GROUP BY "public"."ReviewQuote"."placeId") AS "aggr_selection_1_ReviewQuote" ON ("public"."Place"."id" = "aggr_selection_1_ReviewQuote"."placeId") WHERE 1=1 ORDER BY "public"."Place"."createdAt" DESC LIMIT $2 OFFSET $3
+prisma:query COMMIT
+ GET /api/public/places?limit=100 200 in 182ms
+ ○ Compiling /places ...
+ ✓ Compiled /places in 567ms (1197 modules)
+ GET /places 200 in 1137ms
+Error fetching place: {
+  code: 'PGRST116',
+  details: 'The result contains 0 rows',
+  hint: null,
+  message: 'Cannot coerce the result to a single JSON object'
+}
+Error fetching place: {
+  code: 'PGRST116',
+  details: 'The result contains 0 rows',
+  hint: null,
+  message: 'Cannot coerce the result to a single JSON object'
+}
+ GET /places/cmfrbbyd10003cae6i9spcl64 200 in 209ms
+ ✓ Compiled in 454ms (490 modules)
+ ✓ Compiled in 352ms (490 modules)
+Error fetching place: {
+  code: 'PGRST116',
+  details: 'The result contains 0 rows',
+  hint: null,
+  message: 'Cannot coerce the result to a single JSON object'
+}
+Error fetching place: {
+  code: 'PGRST116',
+  details: 'The result contains 0 rows',
+  hint: null,
+  message: 'Cannot coerce the result to a single JSON object'
+}
+ GET /places/cmfrbbyd10003cae6i9spcl64 200 in 579ms
+Error fetching place: {
+  code: 'PGRST116',
+  details: 'The result contains 0 rows',
+  hint: null,
+  message: 'Cannot coerce the result to a single JSON object'
+}
+Error fetching place: {
+  code: 'PGRST116',
+  details: 'The result contains 0 rows',
+  hint: null,
+  message: 'Cannot coerce the result to a single JSON object'
+}
+ GET /places/cmfrbbyd10003cae6i9spcl64 200 in 263ms
+ ✓ Compiled in 241ms (490 modules)
+ ✓ Compiled in 302ms (490 modules)
+Error fetching place: {
+  code: 'PGRST116',
+  details: 'The result contains 0 rows',
+  hint: null,
+  message: 'Cannot coerce the result to a single JSON object'
+}
+Error fetching place: {
+  code: 'PGRST116',
+  details: 'The result contains 0 rows',
+  hint: null,
+  message: 'Cannot coerce the result to a single JSON object'
+}
+ GET /places/cmfrbbyd10003cae6i9spcl64 200 in 466ms
+Error fetching place: {
+  code: 'PGRST116',
+  details: 'The result contains 0 rows',
+  hint: null,
+  message: 'Cannot coerce the result to a single JSON object'
+}
+Error fetching place: {
+  code: 'PGRST116',
+  details: 'The result contains 0 rows',
+  hint: null,
+  message: 'Cannot coerce the result to a single JSON object'
+}
+ GET /places/cmfrbbyd10003cae6i9spcl64 200 in 318ms
+ GET / 200 in 356ms
+ ✓ Compiled in 342ms (490 modules)
+ GET / 200 in 306ms
+ ⚠ Failed to reload dynamic routes: [Error: You cannot use different slug names for the same dynamic path ('placeId' !== 'slug').]
+ ✓ Compiled in 278ms (490 modules)
+[Error: You cannot use different slug names for the same dynamic path ('placeId' !== 'slug').]
+ ⨯ unhandledRejection: [Error: You cannot use different slug names for the same dynamic path ('placeId' !== 'slug').]
+ ⨯ unhandledRejection:  [Error: You cannot use different slug names for the same dynamic path ('placeId' !== 'slug').]
+ GET / 200 in 300ms
+ GET / 200 in 933ms
+ GET /favicon.ico 200 in 128ms
+ ✓ Compiled in 232ms (490 modules)
+ ⚠ Failed to reload dynamic routes: [Error: You cannot use different slug names for the same dynamic path ('placeId' !== 'slug').]
+ GET / 200 in 160ms
+ GET /places 200 in 293ms
+ ✓ Compiled in 747ms (1205 modules)
+ GET /places 200 in 433ms
+Error fetching place: {
+  code: 'PGRST116',
+  details: 'The result contains 0 rows',
+  hint: null,
+  message: 'Cannot coerce the result to a single JSON object'
+}
+Error fetching place: {
+  code: 'PGRST116',
+  details: 'The result contains 0 rows',
+  hint: null,
+  message: 'Cannot coerce the result to a single JSON object'
+}
+ GET /places/cmfrbbyd10003cae6i9spcl64 200 in 371ms
+ ✓ Compiled in 221ms (490 modules)
+ ⚠ Failed to reload dynamic routes: [Error: You cannot use different slug names for the same dynamic path ('placeId' !== 'slug').]
+ GET /places 200 in 120ms
+ ✓ Compiled in 228ms (490 modules)
+ ⚠ Failed to reload dynamic routes: [Error: You cannot use different slug names for the same dynamic path ('placeId' !== 'slug').]
+ GET /places 200 in 191ms
+ ✓ Compiled in 1358ms (1188 modules)
+ GET /places 200 in 452ms
+ ⚠ Failed to reload dynamic routes: [Error: You cannot use different slug names for the same dynamic path ('placeId' !== 'slug').]
+ ○ Compiling /_not-found ...
+ ✓ Compiled /_not-found in 1423ms (1193 modules)
+ GET /places 200 in 454ms
+ GET /places 404 in 1813ms
+ ✓ Compiled /favicon.ico in 228ms (716 modules)
+ GET /favicon.ico 200 in 417ms
+ GET /places 200 in 480ms
+Error fetching place: {
+  code: 'PGRST116',
+  details: 'The result contains 0 rows',
+  hint: null,
+  message: 'Cannot coerce the result to a single JSON object'
+}
+Error fetching place: {
+  code: 'PGRST116',
+  details: 'The result contains 0 rows',
+  hint: null,
+  message: 'Cannot coerce the result to a single JSON object'
+}
+ GET /places/cmfrbbyd10003cae6i9spcl64 200 in 234ms
+ ⚠ Failed to reload dynamic routes: [Error: You cannot use different slug names for the same dynamic path ('placeId' !== 'slug').]
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 654ms (1210 modules)
+Error fetching place: {
+  code: 'PGRST116',
+  details: 'The result contains 0 rows',
+  hint: null,
+  message: 'Cannot coerce the result to a single JSON object'
+}
+Error fetching place: {
+  code: 'PGRST116',
+  details: 'The result contains 0 rows',
+  hint: null,
+  message: 'Cannot coerce the result to a single JSON object'
+}
+ GET /places/cmfrbbyd10003cae6i9spcl64 404 in 1002ms
+ GET /favicon.ico 200 in 31ms
+ GET /favicon.ico 200 in 16ms
+ GET /favicon.ico 200 in 15ms
+ GET /places 200 in 249ms
+Error fetching place: {
+  code: 'PGRST116',
+  details: 'The result contains 0 rows',
+  hint: null,
+  message: 'Cannot coerce the result to a single JSON object'
+}
+Error fetching place: {
+  code: 'PGRST116',
+  details: 'The result contains 0 rows',
+  hint: null,
+  message: 'Cannot coerce the result to a single JSON object'
+}
+ GET /places/cmfrbbyd10004cae6e10cu6i7 200 in 259ms
+ ✓ Compiled in 857ms (1210 modules)
+Error fetching place: {
+  code: 'PGRST116',
+  details: 'The result contains 0 rows',
+  hint: null,
+  message: 'Cannot coerce the result to a single JSON object'
+}
+Error fetching place: {
+  code: 'PGRST116',
+  details: 'The result contains 0 rows',
+  hint: null,
+  message: 'Cannot coerce the result to a single JSON object'
+}
+ GET /places/cmfrbbyd10004cae6e10cu6i7 200 in 333ms
+ GET / 200 in 494ms
+ ✓ Compiled in 237ms (494 modules)
+ ⚠ Failed to reload dynamic routes: [Error: You cannot use different slug names for the same dynamic path ('placeId' !== 'slug').]
+ GET / 200 in 186ms
+ ✓ Compiled in 475ms (1210 modules)
+ GET / 200 in 260ms
+Error fetching place: {
+  code: 'PGRST116',
+  details: 'The result contains 0 rows',
+  hint: null,
+  message: 'Cannot coerce the result to a single JSON object'
+}
+Error fetching place: {
+  code: 'PGRST116',
+  details: 'The result contains 0 rows',
+  hint: null,
+  message: 'Cannot coerce the result to a single JSON object'
+}
+ GET /places/princes-hot-chicken 404 in 427ms
+ ✓ Compiled /api/public/places in 280ms (721 modules)
+ GET / 200 in 204ms
+prisma:query BEGIN
+prisma:query DEALLOCATE ALL
+prisma:query SELECT "public"."Place"."id", "public"."Place"."googlePlaceId", "public"."Place"."name", "public"."Place"."address", "public"."Place"."city", "public"."Place"."lat", "public"."Place"."lng", "public"."Place"."mapsUrl", "public"."Place"."avgRating", "public"."Place"."reviewCount", "public"."Place"."lastReviewSyncAt", "public"."Place"."neighborhood", "public"."Place"."cuisines", "public"."Place"."createdAt", COALESCE("aggr_selection_0_Article"."_aggr_count_articles", 0) AS "_aggr_count_articles", COALESCE("aggr_selection_1_ReviewQuote"."_aggr_count_reviews", 0) AS "_aggr_count_reviews" FROM "public"."Place" LEFT JOIN (SELECT "public"."Article"."placeId", COUNT(*) AS "_aggr_count_articles" FROM "public"."Article" WHERE "public"."Article"."status" = $1 GROUP BY "public"."Article"."placeId") AS "aggr_selection_0_Article" ON ("public"."Place"."id" = "aggr_selection_0_Article"."placeId") LEFT JOIN (SELECT "public"."ReviewQuote"."placeId", COUNT(*) AS "_aggr_count_reviews" FROM "public"."ReviewQuote" WHERE 1=1 GROUP BY "public"."ReviewQuote"."placeId") AS "aggr_selection_1_ReviewQuote" ON ("public"."Place"."id" = "aggr_selection_1_ReviewQuote"."placeId") WHERE 1=1 ORDER BY "public"."Place"."createdAt" DESC LIMIT $2 OFFSET $3
+prisma:query COMMIT
+ GET /api/public/places 200 in 740ms
+ ✓ Compiled in 192ms (490 modules)
+ ✓ Compiled /_not-found in 381ms (1176 modules)
+ GET / 404 in 688ms
+ GET / 200 in 159ms
+ GET / 200 in 406ms
+ GET / 200 in 752ms
+ ✓ Compiled /places/[slug] in 464ms (1188 modules)
+Error fetching place by slug: {
+  code: 'PGRST116',
+  details: 'The result contains 0 rows',
+  hint: null,
+  message: 'Cannot coerce the result to a single JSON object'
+}
+Error fetching place by slug: {
+  code: 'PGRST116',
+  details: 'The result contains 0 rows',
+  hint: null,
+  message: 'Cannot coerce the result to a single JSON object'
+}
+ GET /places/princes-hot-chicken 404 in 1666ms
+ ✓ Compiled in 547ms (1202 modules)
+ GET / 200 in 376ms
+ ⨯ TypeError: review.reviewedAt.toLocaleDateString is not a function
+    at eval (src/app/places/[slug]/page.tsx:266:50)
+    at Array.map (<anonymous>)
+    at PlaceDetailPage (src/app/places/[slug]/page.tsx:244:48)
+  264 |                           {review.reviewedAt && (
+  265 |                             <span className="text-xs text-gray-500">
+> 266 |                               {review.reviewedAt.toLocaleDateString()}
+      |                                                  ^
+  267 |                             </span>
+  268 |                           )}
+  269 |                         </div> {
+  digest: '707432994'
+}
+ GET /places/princes-hot-chicken 500 in 1047ms
+ ✓ Compiled in 701ms (1188 modules)
+ GET / 200 in 344ms
+ GET /places/princes-hot-chicken 200 in 777ms
+ GET / 200 in 429ms
+ ✓ Compiled /favicon.ico in 422ms (715 modules)
+ GET /favicon.ico 200 in 758ms
+ GET /map 200 in 958ms
