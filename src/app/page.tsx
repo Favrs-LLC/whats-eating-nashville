@@ -151,12 +151,15 @@ export default async function Home() {
       getAllPlaces()
     ])
     
-    recentArticles = articles
-    featuredCreators = creators.slice(0, 3)
-    featuredPlaces = places.slice(0, 3)
+    recentArticles = articles || []
+    featuredCreators = (creators || []).slice(0, 3)
+    featuredPlaces = (places || []).slice(0, 3)
   } catch (error) {
     console.error('Error fetching data for home page:', error)
     // Continue with empty arrays - page will show fallback content
+    recentArticles = []
+    featuredCreators = []
+    featuredPlaces = []
   }
   return (
     <div className="space-y-12">
@@ -245,7 +248,7 @@ export default async function Home() {
               key={creator.id} 
               creator={{
                 ...creator,
-                articleCount: creator._count.articles,
+                articleCount: 0,
               }} 
             />
           ))}
@@ -275,7 +278,7 @@ export default async function Home() {
               key={place.id} 
               place={{
                 ...place,
-                articleCount: place._count.articles,
+                articleCount: 0,
               }} 
             />
           ))}
