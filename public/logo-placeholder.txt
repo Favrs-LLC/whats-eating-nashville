@@ -1,0 +1,21 @@
+LOGO INSTRUCTIONS:
+
+Please save the horizontal "What's Eating Nashville" logo image you provided as:
+/Users/williambridges/Desktop/projects/whatseatingnashville/public/logo.png
+
+The logo should be:
+- Horizontal format with "WHAT'S Eating NASHVILLE" text
+- Blue text for "WHAT'S" and "NASHVILLE" 
+- Red script text for "Eating"
+- Blue circular element
+- Clean, professional design
+
+Once you save the logo as logo.png, the navigation and admin panel will display it correctly with the sizing I've configured:
+- Navigation: h-8 w-auto (height 32px, auto width)
+- Admin panel: h-6 w-auto (height 24px, auto width)
+
+The logo will automatically appear in:
+- Main navigation bar
+- Admin panel header
+- Social media sharing (Open Graph)
+- Browser favicon

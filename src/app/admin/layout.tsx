@@ -37,11 +37,11 @@ export default function AdminLayout({
             <div className="flex items-center gap-4">
               <Link href="/admin" className="flex items-center gap-3">
                 <Image
-                  src="/logo.png"
+                  src="/logo-eat.png"
                   alt="What's Eating Nashville"
-                  width={120}
-                  height={30}
-                  className="h-6 w-auto"
+                  width={180}
+                  height={45}
+                  className="h-8 w-auto"
                 />
                 <div>
                   <h1 className="font-semibold text-gray-900">Admin Panel</h1>

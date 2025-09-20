@@ -38,9 +38,9 @@ export const metadata: Metadata = {
     description: "Discover Nashville's incredible food scene through the eyes of local creators",
         images: [
           {
-            url: '/logo.png',
+            url: '/logo-eat.png',
             width: 1200,
-            height: 630,
+            height: 300,
             alt: "What's Eating Nashville - Discover Music City's Food Scene",
           },
         ],

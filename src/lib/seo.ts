@@ -15,7 +15,7 @@ export const defaultSEO: DefaultSeoProps = {
     description: "Discover Nashville's incredible food scene through the eyes of local creators",
     images: [
       {
-        url: `${process.env.NEXT_PUBLIC_SITE_URL}/og-image.jpg`,
+        url: `${process.env.NEXT_PUBLIC_SITE_URL}/logo-eat.png`,
         width: 1200,
         height: 630,
         alt: "What's Eating Nashville - Discover Music City's Food Scene",
@@ -185,7 +185,7 @@ export function generateOrganizationJsonLd() {
     '@type': 'Organization',
     name: "What's Eating Nashville",
     url: baseUrl,
-    logo: `${baseUrl}/logo.png`,
+    logo: `${baseUrl}/logo-eat.png`,
     description: "Discover Nashville's incredible food scene through the eyes of local creators",
     contactPoint: {
       '@type': 'ContactPoint',
