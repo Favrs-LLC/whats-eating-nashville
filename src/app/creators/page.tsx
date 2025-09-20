@@ -84,7 +84,7 @@ export default async function CreatorsPage() {
             </div>
           </div>
           <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
-            Meet Our Creators
+            Meet The Creators
           </h1>
           <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
             The passionate food enthusiasts who bring you the best of Nashville's culinary scene. 

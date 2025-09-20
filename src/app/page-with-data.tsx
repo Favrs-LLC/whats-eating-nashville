@@ -232,7 +232,7 @@ export default async function Home() {
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-            Meet Our Creators
+            Meet The Creators
           </h2>
           <p className="mt-4 text-lg text-gray-600">
             The passionate food enthusiasts sharing Nashville's culinary stories
