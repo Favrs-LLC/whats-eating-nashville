@@ -66,7 +66,6 @@ export const supabaseQueries = {
         slug,
         title,
         excerpt,
-        featuredImageUrl,
         publishedAt,
         status,
         creator:Creator!inner(
@@ -109,7 +108,6 @@ export const supabaseQueries = {
           slug,
           title,
           excerpt,
-          featuredImageUrl,
           publishedAt,
           place:Place!inner(name, neighborhood)
         )
@@ -146,7 +144,6 @@ export const supabaseQueries = {
           slug,
           title,
           excerpt,
-          featuredImageUrl,
           publishedAt,
           creator:Creator!inner(displayName, instagramHandle, avatarUrl)
         ),
@@ -177,7 +174,6 @@ export const supabaseQueries = {
         title,
         excerpt,
         content,
-        featuredImageUrl,
         publishedAt,
         status,
         creator:Creator!inner(

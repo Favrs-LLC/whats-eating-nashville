@@ -69,7 +69,6 @@ export async function getCreatorByHandle(handle: string) {
           slug,
           title,
           excerpt,
-          featuredImageUrl,
           publishedAt,
           sourcePostUrl,
           place:Place!inner(
@@ -120,7 +119,6 @@ export async function getPlaceById(id: string) {
           slug,
           title,
           excerpt,
-          featuredImageUrl,
           publishedAt,
           sourcePostUrl,
           creator:Creator!inner(
