@@ -14,8 +14,8 @@ export async function GET() {
     const sampleCreator = await prisma.creator.findFirst({
       select: {
         id: true,
-        name: true,
-        handle: true,
+        displayName: true,
+        instagramHandle: true,
         isActive: true,
       }
     });
