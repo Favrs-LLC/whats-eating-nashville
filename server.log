@@ -484,3 +484,85 @@ Error fetching place by slug: {
  ✓ Compiled /favicon.ico in 422ms (715 modules)
  GET /favicon.ico 200 in 758ms
  GET /map 200 in 958ms
+ ✓ Compiled in 905ms (1205 modules)
+ GET / 200 in 417ms
+ GET / 200 in 137ms
+ GET /places 200 in 654ms
+ GET /places/princes-hot-chicken 200 in 529ms
+ GET / 200 in 310ms
+ ○ Compiling /creators ...
+ ✓ Compiled /creators in 1787ms (1178 modules)
+ GET /creators 200 in 2453ms
+ GET /map 200 in 53ms
+ ✓ Compiled /api/public/places in 500ms (711 modules)
+prisma:query BEGIN
+prisma:query DEALLOCATE ALL
+prisma:query SELECT "public"."Place"."id", "public"."Place"."googlePlaceId", "public"."Place"."name", "public"."Place"."address", "public"."Place"."city", "public"."Place"."lat", "public"."Place"."lng", "public"."Place"."mapsUrl", "public"."Place"."avgRating", "public"."Place"."reviewCount", "public"."Place"."lastReviewSyncAt", "public"."Place"."neighborhood", "public"."Place"."cuisines", "public"."Place"."createdAt", COALESCE("aggr_selection_0_Article"."_aggr_count_articles", 0) AS "_aggr_count_articles", COALESCE("aggr_selection_1_ReviewQuote"."_aggr_count_reviews", 0) AS "_aggr_count_reviews" FROM "public"."Place" LEFT JOIN (SELECT "public"."Article"."placeId", COUNT(*) AS "_aggr_count_articles" FROM "public"."Article" WHERE "public"."Article"."status" = $1 GROUP BY "public"."Article"."placeId") AS "aggr_selection_0_Article" ON ("public"."Place"."id" = "aggr_selection_0_Article"."placeId") LEFT JOIN (SELECT "public"."ReviewQuote"."placeId", COUNT(*) AS "_aggr_count_reviews" FROM "public"."ReviewQuote" WHERE 1=1 GROUP BY "public"."ReviewQuote"."placeId") AS "aggr_selection_1_ReviewQuote" ON ("public"."Place"."id" = "aggr_selection_1_ReviewQuote"."placeId") WHERE 1=1 ORDER BY "public"."Place"."createdAt" DESC LIMIT $2 OFFSET $3
+prisma:query COMMIT
+ GET /api/public/places?limit=100 200 in 1149ms
+prisma:query BEGIN
+prisma:query DEALLOCATE ALL
+prisma:query SELECT "public"."Place"."id", "public"."Place"."googlePlaceId", "public"."Place"."name", "public"."Place"."address", "public"."Place"."city", "public"."Place"."lat", "public"."Place"."lng", "public"."Place"."mapsUrl", "public"."Place"."avgRating", "public"."Place"."reviewCount", "public"."Place"."lastReviewSyncAt", "public"."Place"."neighborhood", "public"."Place"."cuisines", "public"."Place"."createdAt", COALESCE("aggr_selection_0_Article"."_aggr_count_articles", 0) AS "_aggr_count_articles", COALESCE("aggr_selection_1_ReviewQuote"."_aggr_count_reviews", 0) AS "_aggr_count_reviews" FROM "public"."Place" LEFT JOIN (SELECT "public"."Article"."placeId", COUNT(*) AS "_aggr_count_articles" FROM "public"."Article" WHERE "public"."Article"."status" = $1 GROUP BY "public"."Article"."placeId") AS "aggr_selection_0_Article" ON ("public"."Place"."id" = "aggr_selection_0_Article"."placeId") LEFT JOIN (SELECT "public"."ReviewQuote"."placeId", COUNT(*) AS "_aggr_count_reviews" FROM "public"."ReviewQuote" WHERE 1=1 GROUP BY "public"."ReviewQuote"."placeId") AS "aggr_selection_1_ReviewQuote" ON ("public"."Place"."id" = "aggr_selection_1_ReviewQuote"."placeId") WHERE 1=1 ORDER BY "public"."Place"."createdAt" DESC LIMIT $2 OFFSET $3
+prisma:query COMMIT
+ GET /api/public/places?limit=100 200 in 170ms
+Error fetching place by slug: {
+  code: 'PGRST116',
+  details: 'The result contains 0 rows',
+  hint: null,
+  message: 'Cannot coerce the result to a single JSON object'
+}
+Error fetching place by slug: {
+  code: 'PGRST116',
+  details: 'The result contains 0 rows',
+  hint: null,
+  message: 'Cannot coerce the result to a single JSON object'
+}
+ GET /places/cmfrbbyd10003cae6i9spcl64 404 in 535ms
+prisma:query SELECT 1
+prisma:query BEGIN
+prisma:query DEALLOCATE ALL
+prisma:query SELECT "public"."Place"."id", "public"."Place"."googlePlaceId", "public"."Place"."name", "public"."Place"."address", "public"."Place"."city", "public"."Place"."lat", "public"."Place"."lng", "public"."Place"."mapsUrl", "public"."Place"."avgRating", "public"."Place"."reviewCount", "public"."Place"."lastReviewSyncAt", "public"."Place"."neighborhood", "public"."Place"."cuisines", "public"."Place"."createdAt", COALESCE("aggr_selection_0_Article"."_aggr_count_articles", 0) AS "_aggr_count_articles", COALESCE("aggr_selection_1_ReviewQuote"."_aggr_count_reviews", 0) AS "_aggr_count_reviews" FROM "public"."Place" LEFT JOIN (SELECT "public"."Article"."placeId", COUNT(*) AS "_aggr_count_articles" FROM "public"."Article" WHERE "public"."Article"."status" = $1 GROUP BY "public"."Article"."placeId") AS "aggr_selection_0_Article" ON ("public"."Place"."id" = "aggr_selection_0_Article"."placeId") LEFT JOIN (SELECT "public"."ReviewQuote"."placeId", COUNT(*) AS "_aggr_count_reviews" FROM "public"."ReviewQuote" WHERE 1=1 GROUP BY "public"."ReviewQuote"."placeId") AS "aggr_selection_1_ReviewQuote" ON ("public"."Place"."id" = "aggr_selection_1_ReviewQuote"."placeId") WHERE 1=1 ORDER BY "public"."Place"."createdAt" DESC LIMIT $2 OFFSET $3
+prisma:query COMMIT
+ GET /api/public/places 200 in 208ms
+prisma:query BEGIN
+prisma:query DEALLOCATE ALL
+prisma:query SELECT "public"."Place"."id", "public"."Place"."googlePlaceId", "public"."Place"."name", "public"."Place"."address", "public"."Place"."city", "public"."Place"."lat", "public"."Place"."lng", "public"."Place"."mapsUrl", "public"."Place"."avgRating", "public"."Place"."reviewCount", "public"."Place"."lastReviewSyncAt", "public"."Place"."neighborhood", "public"."Place"."cuisines", "public"."Place"."createdAt", COALESCE("aggr_selection_0_Article"."_aggr_count_articles", 0) AS "_aggr_count_articles", COALESCE("aggr_selection_1_ReviewQuote"."_aggr_count_reviews", 0) AS "_aggr_count_reviews" FROM "public"."Place" LEFT JOIN (SELECT "public"."Article"."placeId", COUNT(*) AS "_aggr_count_articles" FROM "public"."Article" WHERE "public"."Article"."status" = $1 GROUP BY "public"."Article"."placeId") AS "aggr_selection_0_Article" ON ("public"."Place"."id" = "aggr_selection_0_Article"."placeId") LEFT JOIN (SELECT "public"."ReviewQuote"."placeId", COUNT(*) AS "_aggr_count_reviews" FROM "public"."ReviewQuote" WHERE 1=1 GROUP BY "public"."ReviewQuote"."placeId") AS "aggr_selection_1_ReviewQuote" ON ("public"."Place"."id" = "aggr_selection_1_ReviewQuote"."placeId") WHERE 1=1 ORDER BY "public"."Place"."createdAt" DESC LIMIT $2 OFFSET $3
+prisma:query COMMIT
+ GET /api/public/places 200 in 165ms
+ ✓ Compiled in 1221ms (1195 modules)
+ GET / 200 in 586ms
+Error fetching place by slug: {
+  code: 'PGRST116',
+  details: 'The result contains 0 rows',
+  hint: null,
+  message: 'Cannot coerce the result to a single JSON object'
+}
+Error fetching place by slug: {
+  code: 'PGRST116',
+  details: 'The result contains 0 rows',
+  hint: null,
+  message: 'Cannot coerce the result to a single JSON object'
+}
+ GET /places/cmfrbbyd10003cae6i9spcl64 200 in 739ms
+ ✓ Compiled in 456ms (1188 modules)
+ GET / 200 in 677ms
+Error fetching place by slug: {
+  code: 'PGRST116',
+  details: 'The result contains 0 rows',
+  hint: null,
+  message: 'Cannot coerce the result to a single JSON object'
+}
+Error fetching place by slug: {
+  code: 'PGRST116',
+  details: 'The result contains 0 rows',
+  hint: null,
+  message: 'Cannot coerce the result to a single JSON object'
+}
+ GET /places/cmfrbbyd10003cae6i9spcl64 200 in 737ms
+ GET /map 200 in 339ms
+ ✓ Compiled /api/public/places in 392ms (717 modules)
+ GET /map 200 in 590ms
+ GET /api/public/places?limit=100 200 in 1150ms
+ GET / 200 in 860ms
+ GET /api/public/places 200 in 125ms
+ GET /places/monells-dining-catering 200 in 564ms

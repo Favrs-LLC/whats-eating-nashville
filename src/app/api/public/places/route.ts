@@ -1,55 +1,37 @@
-import { NextRequest } from 'next/server'
-import { prisma } from '@/lib/prisma'
+import { NextRequest, NextResponse } from 'next/server'
+import { getAllPlaces } from '@/lib/api'
 
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url)
     const limit = Math.min(parseInt(searchParams.get('limit') || '20'), 100)
-    const cursor = searchParams.get('cursor')
-    const neighborhood = searchParams.get('neighborhood')
     const cuisine = searchParams.get('cuisine')
+    const neighborhood = searchParams.get('neighborhood')
 
-    const where: any = {}
-
-    // Add neighborhood filter
-    if (neighborhood) {
-      where.neighborhood = { equals: neighborhood, mode: 'insensitive' }
-    }
-
-    // Add cuisine filter
+    // Get all places using Supabase client (includes slug field)
+    const allPlaces = await getAllPlaces()
+    
+    // Filter by cuisine if specified
+    let filteredPlaces = allPlaces
     if (cuisine) {
-      where.cuisines = { has: cuisine }
+      filteredPlaces = allPlaces.filter(place => 
+        place.cuisines.includes(cuisine)
+      )
+    }
+    
+    // Filter by neighborhood if specified
+    if (neighborhood) {
+      filteredPlaces = filteredPlaces.filter(place => 
+        place.neighborhood?.toLowerCase() === neighborhood.toLowerCase()
+      )
     }
 
-    // Add cursor pagination
-    if (cursor) {
-      where.id = { lt: cursor }
-    }
-
-    const places = await prisma.place.findMany({
-      where,
-      include: {
-        _count: {
-          select: {
-            articles: {
-              where: { status: 'published' },
-            },
-            reviews: true,
-          },
-        },
-      },
-      orderBy: {
-        createdAt: 'desc',
-      },
-      take: limit + 1,
-    })
-
-    const hasMore = places.length > limit
-    const items = hasMore ? places.slice(0, -1) : places
-    const nextCursor = hasMore ? items[items.length - 1]?.id : null
+    // Apply limit
+    const places = filteredPlaces.slice(0, limit)
+    const hasMore = filteredPlaces.length > limit
 
     const response = {
-      places: items.map(place => ({
+      places: places.map(place => ({
         id: place.id,
         google_place_id: place.googlePlaceId,
         slug: place.slug,
@@ -64,46 +46,23 @@ export async function GET(request: NextRequest) {
           lat: place.lat,
           lng: place.lng,
         } : null,
-        article_count: place._count.articles,
-        review_quote_count: place._count.reviews,
+        article_count: 0, // TODO: Calculate from articles array
+        review_quote_count: 0, // TODO: Calculate from reviews array
         created_at: place.createdAt,
       })),
       pagination: {
         limit,
-        next_cursor: nextCursor,
+        next_cursor: null, // Simplified pagination for now
         has_more: hasMore,
       },
     }
 
-    return new Response(JSON.stringify(response), {
-      status: 200,
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'GET, OPTIONS',
-        'Access-Control-Allow-Headers': 'Content-Type',
-      },
-    })
-
+    return NextResponse.json(response)
   } catch (error) {
     console.error('Error fetching places:', error)
-    return new Response(JSON.stringify({ error: 'Internal server error' }), {
-      status: 500,
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-      },
-    })
+    return NextResponse.json(
+      { error: 'Internal server error' },
+      { status: 500 }
+    )
   }
-}
-
-export async function OPTIONS() {
-  return new Response(null, {
-    status: 200,
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET, OPTIONS',
-      'Access-Control-Allow-Headers': 'Content-Type',
-    },
-  })
 }
