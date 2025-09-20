@@ -125,7 +125,7 @@ export default async function CreatorProfilePage({ params }: { params: Promise<{
               <div className="flex gap-6 mt-6">
                 <div className="text-center">
                   <div className="text-2xl font-bold text-brand-red">
-                    {creator._count.articles}
+                    {creator.articles?.length || 0}
                   </div>
                   <div className="text-sm text-gray-600">Articles</div>
                 </div>
@@ -148,7 +148,7 @@ export default async function CreatorProfilePage({ params }: { params: Promise<{
             </h2>
             <div className="flex items-center gap-2 text-sm text-gray-500">
               <FileText className="h-4 w-4" />
-              <span>{creator._count.articles} article{creator._count.articles !== 1 ? 's' : ''}</span>
+              <span>{creator.articles?.length || 0} article{(creator.articles?.length || 0) !== 1 ? 's' : ''}</span>
             </div>
           </div>
 
@@ -164,6 +164,11 @@ export default async function CreatorProfilePage({ params }: { params: Promise<{
                       displayName: creator.displayName,
                       instagramHandle: creator.instagramHandle,
                       avatarUrl: creator.avatarUrl || undefined,
+                    },
+                    place: {
+                      name: article.place[0]?.name || '',
+                      neighborhood: article.place[0]?.neighborhood || null,
+                      cuisines: article.place[0]?.cuisines || [],
                     },
                   }}
                   showCreator={false} // Don't show creator since we're on their profile

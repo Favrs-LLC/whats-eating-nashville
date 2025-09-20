@@ -72,6 +72,7 @@ export async function getCreatorByHandle(handle: string) {
           excerpt,
           featuredImageUrl,
           publishedAt,
+          sourcePostUrl,
           place:Place!inner(
             id,
             name,
@@ -122,6 +123,7 @@ export async function getPlaceById(id: string) {
           excerpt,
           featuredImageUrl,
           publishedAt,
+          sourcePostUrl,
           creator:Creator!inner(
             id,
             displayName,
@@ -133,9 +135,9 @@ export async function getPlaceById(id: string) {
           id,
           author,
           rating,
-          quote,
+          text,
           source,
-          createdAt
+          reviewedAt
         )
       `)
       .eq('id', id)
@@ -164,6 +166,7 @@ export async function getRecentArticles(limit = 6) {
         excerpt,
         featuredImageUrl,
         publishedAt,
+        sourcePostUrl,
         creator:Creator!inner(
           displayName,
           instagramHandle,

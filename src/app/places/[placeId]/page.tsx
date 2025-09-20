@@ -116,7 +116,7 @@ export default async function PlaceDetailPage({ params }: { params: Promise<{ pl
                 {/* Cuisines */}
                 {place.cuisines.length > 0 && (
                   <div className="flex flex-wrap gap-2 mb-6">
-                    {place.cuisines.map((cuisine) => (
+                    {place.cuisines.map((cuisine: string) => (
                       <Badge key={cuisine} variant="secondary" className="text-sm">
                         {cuisine}
                       </Badge>
@@ -128,13 +128,13 @@ export default async function PlaceDetailPage({ params }: { params: Promise<{ pl
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
                   <div className="text-center">
                     <div className="text-2xl font-bold text-brand-red">
-                      {place._count.articles}
+                      {place.articles?.length || 0}
                     </div>
                     <div className="text-sm text-gray-600">Articles</div>
                   </div>
                   <div className="text-center">
                     <div className="text-2xl font-bold text-brand-blue">
-                      {place._count.reviews}
+                      {place.reviews?.length || 0}
                     </div>
                     <div className="text-sm text-gray-600">Reviews</div>
                   </div>
@@ -182,7 +182,7 @@ export default async function PlaceDetailPage({ params }: { params: Promise<{ pl
                 </h2>
                 <div className="flex items-center gap-2 text-sm text-gray-500">
                   <FileText className="h-4 w-4" />
-                  <span>{place._count.articles} article{place._count.articles !== 1 ? 's' : ''}</span>
+                  <span>{place.articles?.length || 0} article{(place.articles?.length || 0) !== 1 ? 's' : ''}</span>
                 </div>
               </div>
 
@@ -194,9 +194,11 @@ export default async function PlaceDetailPage({ params }: { params: Promise<{ pl
                       article={{
                         ...article,
                         excerpt: article.excerpt || undefined,
+                        sourcePostUrl: article.sourcePostUrl || '',
                         creator: {
-                          ...article.creator,
-                          avatarUrl: article.creator.avatarUrl || undefined,
+                          displayName: article.creator[0]?.displayName || '',
+                          instagramHandle: article.creator[0]?.instagramHandle || '',
+                          avatarUrl: article.creator[0]?.avatarUrl || undefined,
                         },
                         place: {
                           name: place.name,
@@ -293,7 +295,7 @@ export default async function PlaceDetailPage({ params }: { params: Promise<{ pl
                   <div>
                     <p className="text-sm font-medium text-gray-900">Cuisine Types</p>
                     <div className="flex flex-wrap gap-1 mt-1">
-                      {place.cuisines.map((cuisine) => (
+                      {place.cuisines.map((cuisine: string) => (
                         <Badge key={cuisine} variant="outline" className="text-xs">
                           {cuisine}
                         </Badge>

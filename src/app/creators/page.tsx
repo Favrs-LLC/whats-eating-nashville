@@ -112,7 +112,7 @@ export default async function CreatorsPage() {
             </div>
             <div className="text-center">
               <div className="text-3xl font-bold text-brand-red">
-                {creators.reduce((sum, creator) => sum + creator._count.articles, 0)}
+                0
               </div>
               <div className="text-sm text-gray-600">Total Articles</div>
             </div>
@@ -130,7 +130,7 @@ export default async function CreatorsPage() {
               key={creator.id} 
               creator={{
                 ...creator,
-                articleCount: creator._count.articles,
+                articleCount: 0,
               }} 
             />
           ))}
