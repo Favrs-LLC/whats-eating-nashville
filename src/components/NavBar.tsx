@@ -24,17 +24,15 @@ export default function NavBar() {
         <div className="flex h-16 justify-between items-center">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <Link href="/" className="flex items-center gap-3">
+            <Link href="/" className="flex items-center">
               <Image
                 src="/logo.png"
                 alt="What's Eating Nashville"
-                width={40}
-                height={40}
-                className="rounded-lg"
+                width={200}
+                height={50}
+                className="h-8 w-auto"
+                priority
               />
-              <span className="font-serif text-xl font-bold text-gray-900 hidden sm:block">
-                What's Eating Nashville
-              </span>
             </Link>
           </div>
 

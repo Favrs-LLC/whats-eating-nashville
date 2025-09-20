@@ -39,13 +39,12 @@ export default function AdminLayout({
                 <Image
                   src="/logo.png"
                   alt="What's Eating Nashville"
-                  width={32}
-                  height={32}
-                  className="rounded-lg"
+                  width={120}
+                  height={30}
+                  className="h-6 w-auto"
                 />
                 <div>
                   <h1 className="font-semibold text-gray-900">Admin Panel</h1>
-                  <p className="text-xs text-gray-500">What's Eating Nashville</p>
                 </div>
               </Link>
               <Badge variant="secondary" className="ml-2">

@@ -36,14 +36,14 @@ export const metadata: Metadata = {
     siteName: "What's Eating Nashville",
     title: "What's Eating Nashville",
     description: "Discover Nashville's incredible food scene through the eyes of local creators",
-    images: [
-      {
-        url: '/og-image.jpg',
-        width: 1200,
-        height: 630,
-        alt: "What's Eating Nashville - Discover Music City's Food Scene",
-      },
-    ],
+        images: [
+          {
+            url: '/logo.png',
+            width: 1200,
+            height: 630,
+            alt: "What's Eating Nashville - Discover Music City's Food Scene",
+          },
+        ],
   },
   twitter: {
     card: 'summary_large_image',
