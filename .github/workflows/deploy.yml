@@ -34,6 +34,8 @@ jobs:
           ADMIN_BASIC_AUTH_PASS: ${{ secrets.ADMIN_BASIC_AUTH_PASS }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           NEXT_PUBLIC_SITE_URL: ${{ secrets.NEXT_PUBLIC_SITE_URL }}
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
           GUMLOOP_ENHANCER_URL: ${{ secrets.GUMLOOP_ENHANCER_URL }}
           ENHANCER_SECRET: ${{ secrets.ENHANCER_SECRET }}
 
