@@ -181,7 +181,7 @@ export default async function PlacesPage() {
               key={place.id} 
               place={{
                 ...place,
-                articleCount: place._count.articles,
+                articleCount: 0,
               }} 
             />
           ))}
