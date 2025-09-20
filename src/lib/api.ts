@@ -1,45 +1,48 @@
-import { prisma } from './prisma'
+import { supabase } from './supabase'
 
 /**
  * Get article by slug with all related data
  */
 export async function getArticleBySlug(slug: string) {
   try {
-    const article = await prisma.article.findUnique({
-      where: {
+    const { data, error } = await supabase
+      .from('Article')
+      .select(`
+        id,
         slug,
-        status: 'published',
-      },
-      include: {
-        creator: {
-          select: {
-            id: true,
-            displayName: true,
-            instagramHandle: true,
-            instagramUrl: true,
-            avatarUrl: true,
-            bio: true,
-          },
-        },
-        place: {
-          select: {
-            id: true,
-            googlePlaceId: true,
-            name: true,
-            address: true,
-            neighborhood: true,
-            cuisines: true,
-            avgRating: true,
-            reviewCount: true,
-            mapsUrl: true,
-            lat: true,
-            lng: true,
-          },
-        },
-      },
-    })
+        title,
+        excerpt,
+        content,
+        featuredImageUrl,
+        publishedAt,
+        creator:Creator!inner(
+          id,
+          displayName,
+          instagramHandle,
+          instagramUrl,
+          avatarUrl,
+          bio
+        ),
+        place:Place!inner(
+          id,
+          googlePlaceId,
+          name,
+          address,
+          neighborhood,
+          cuisines,
+          avgRating,
+          reviewCount,
+          mapsUrl,
+          lat,
+          lng
+        )
+      `)
+      .eq('slug', slug)
+      .eq('status', 'published')
+      .single()
 
-    return article
+    if (error) throw error
+    return data
   } catch (error) {
     console.error('Error fetching article:', error)
     return null
@@ -51,40 +54,40 @@ export async function getArticleBySlug(slug: string) {
  */
 export async function getCreatorByHandle(handle: string) {
   try {
-    const creator = await prisma.creator.findUnique({
-      where: {
-        instagramHandle: handle,
-        isActive: true,
-      },
-      include: {
-        articles: {
-          where: { status: 'published' },
-          include: {
-            place: {
-              select: {
-                id: true,
-                name: true,
-                neighborhood: true,
-                cuisines: true,
-                avgRating: true,
-              },
-            },
-          },
-          orderBy: {
-            publishedAt: 'desc',
-          },
-        },
-        _count: {
-          select: {
-            articles: {
-              where: { status: 'published' },
-            },
-          },
-        },
-      },
-    })
+    const { data, error } = await supabase
+      .from('Creator')
+      .select(`
+        id,
+        displayName,
+        instagramHandle,
+        instagramUrl,
+        avatarUrl,
+        bio,
+        isActive,
+        createdAt,
+        articles:Article!inner(
+          id,
+          slug,
+          title,
+          excerpt,
+          featuredImageUrl,
+          publishedAt,
+          place:Place!inner(
+            id,
+            name,
+            neighborhood,
+            cuisines,
+            avgRating
+          )
+        )
+      `)
+      .eq('instagramHandle', handle)
+      .eq('isActive', true)
+      .eq('articles.status', 'published')
+      .single()
 
-    return creator
+    if (error) throw error
+    return data
   } catch (error) {
     console.error('Error fetching creator:', error)
     return null
@@ -96,45 +99,51 @@ export async function getCreatorByHandle(handle: string) {
  */
 export async function getPlaceById(id: string) {
   try {
-    const place = await prisma.place.findUnique({
-      where: {
+    const { data, error } = await supabase
+      .from('Place')
+      .select(`
         id,
-      },
-      include: {
-        articles: {
-          where: { status: 'published' },
-          include: {
-            creator: {
-              select: {
-                id: true,
-                displayName: true,
-                instagramHandle: true,
-                avatarUrl: true,
-              },
-            },
-          },
-          orderBy: {
-            publishedAt: 'desc',
-          },
-        },
-        reviews: {
-          orderBy: {
-            reviewedAt: 'desc',
-          },
-          take: 10,
-        },
-        _count: {
-          select: {
-            articles: {
-              where: { status: 'published' },
-            },
-            reviews: true,
-          },
-        },
-      },
-    })
+        googlePlaceId,
+        name,
+        address,
+        city,
+        neighborhood,
+        cuisines,
+        avgRating,
+        reviewCount,
+        mapsUrl,
+        lat,
+        lng,
+        createdAt,
+        articles:Article!inner(
+          id,
+          slug,
+          title,
+          excerpt,
+          featuredImageUrl,
+          publishedAt,
+          creator:Creator!inner(
+            id,
+            displayName,
+            instagramHandle,
+            avatarUrl
+          )
+        ),
+        reviews:ReviewQuote(
+          id,
+          author,
+          rating,
+          quote,
+          source,
+          createdAt
+        )
+      `)
+      .eq('id', id)
+      .eq('articles.status', 'published')
+      .single()
 
-    return place
+    if (error) throw error
+    return data
   } catch (error) {
     console.error('Error fetching place:', error)
     return null
@@ -146,31 +155,32 @@ export async function getPlaceById(id: string) {
  */
 export async function getRecentArticles(limit = 6) {
   try {
-    const articles = await prisma.article.findMany({
-      where: { status: 'published' },
-      include: {
-        creator: {
-          select: {
-            displayName: true,
-            instagramHandle: true,
-            avatarUrl: true,
-          },
-        },
-        place: {
-          select: {
-            name: true,
-            neighborhood: true,
-            cuisines: true,
-          },
-        },
-      },
-      orderBy: {
-        publishedAt: 'desc',
-      },
-      take: limit,
-    })
+    const { data, error } = await supabase
+      .from('Article')
+      .select(`
+        id,
+        slug,
+        title,
+        excerpt,
+        featuredImageUrl,
+        publishedAt,
+        creator:Creator!inner(
+          displayName,
+          instagramHandle,
+          avatarUrl
+        ),
+        place:Place!inner(
+          name,
+          neighborhood,
+          cuisines
+        )
+      `)
+      .eq('status', 'published')
+      .order('publishedAt', { ascending: false })
+      .limit(limit)
 
-    return articles
+    if (error) throw error
+    return data || []
   } catch (error) {
     console.error('Error fetching recent articles:', error)
     return []
@@ -182,23 +192,23 @@ export async function getRecentArticles(limit = 6) {
  */
 export async function getAllCreators() {
   try {
-    const creators = await prisma.creator.findMany({
-      where: { isActive: true },
-      include: {
-        _count: {
-          select: {
-            articles: {
-              where: { status: 'published' },
-            },
-          },
-        },
-      },
-      orderBy: {
-        createdAt: 'desc',
-      },
-    })
+    const { data, error } = await supabase
+      .from('Creator')
+      .select(`
+        id,
+        displayName,
+        instagramHandle,
+        instagramUrl,
+        avatarUrl,
+        bio,
+        isActive,
+        createdAt
+      `)
+      .eq('isActive', true)
+      .order('createdAt', { ascending: false })
 
-    return creators
+    if (error) throw error
+    return data || []
   } catch (error) {
     console.error('Error fetching creators:', error)
     return []
@@ -210,23 +220,27 @@ export async function getAllCreators() {
  */
 export async function getAllPlaces() {
   try {
-    const places = await prisma.place.findMany({
-      include: {
-        _count: {
-          select: {
-            articles: {
-              where: { status: 'published' },
-            },
-            reviews: true,
-          },
-        },
-      },
-      orderBy: {
-        createdAt: 'desc',
-      },
-    })
+    const { data, error } = await supabase
+      .from('Place')
+      .select(`
+        id,
+        googlePlaceId,
+        name,
+        address,
+        city,
+        neighborhood,
+        cuisines,
+        avgRating,
+        reviewCount,
+        mapsUrl,
+        lat,
+        lng,
+        createdAt
+      `)
+      .order('createdAt', { ascending: false })
 
-    return places
+    if (error) throw error
+    return data || []
   } catch (error) {
     console.error('Error fetching places:', error)
     return []
