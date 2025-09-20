@@ -12,8 +12,7 @@ export async function getArticleBySlug(slug: string) {
         slug,
         title,
         excerpt,
-        content,
-        featuredImageUrl,
+        bodyHtml,
         publishedAt,
         creator:Creator!inner(
           id,
@@ -164,7 +163,6 @@ export async function getRecentArticles(limit = 6) {
         slug,
         title,
         excerpt,
-        featuredImageUrl,
         publishedAt,
         sourcePostUrl,
         creator:Creator!inner(
