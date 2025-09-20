@@ -1,39 +1,54 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# What's Eating Nashville
 
-## Getting Started
+A modern food content platform showcasing Nashville's incredible culinary scene through the eyes of local creators.
 
-First, run the development server:
+🚀 **Status**: Production deployment pipeline fixed and ready!
+
+## Quick Start
 
 ```bash
+# Install dependencies
+npm install
+
+# Set up environment variables (see docs/SUPABASE_SETUP.md)
+cp .env.example .env.local
+
+# Run development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Visit [http://localhost:3010](http://localhost:3010) to see the site.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Features
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- 🗺️ **Interactive Map** - Explore Nashville restaurants on Google Maps
+- 👥 **Creator Profiles** - Featured food content creators and their stories  
+- 🍴 **Restaurant Database** - Comprehensive Nashville dining spots
+- 📝 **Content Management** - Admin panel for managing articles and creators
+- 🔍 **SEO Optimized** - Complete SEO setup with sitemaps and metadata
+- 📱 **Responsive Design** - Professional UI with shadcn/ui components
 
-## Learn More
+## Documentation
 
-To learn more about Next.js, take a look at the following resources:
+All setup guides and project documentation are in the [`docs/`](./docs/) folder:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **[Setup Guides](./docs/)** - Database, Maps, and Deployment configuration
+- **[API Documentation](./docs/)** - Complete project specifications and guides
+- **[Development Notes](./docs/)** - Progress tracking and implementation details
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Tech Stack
 
-## Deploy on Vercel
+- **Frontend**: Next.js 15, TypeScript, Tailwind CSS, shadcn/ui
+- **Database**: Supabase (PostgreSQL) with IPv4-compatible client library  
+- **Maps**: Google Maps JavaScript API
+- **Deployment**: Vercel with GitHub Actions CI/CD
+- **Admin**: Basic Auth with TipTap editor and OpenAI integration
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Production
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+🌐 **Live Site**: [https://whatseatingnashville.vercel.app](https://whatseatingnashville.vercel.app)
+
+The site features real Nashville restaurants, food creators, and an interactive map for exploring Music City's culinary scene.
 
 
 🚀 Deployment pipeline fixed - Fri Sep 19 20:57:07 CDT 2025
